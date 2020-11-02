@@ -1,0 +1,44 @@
+.SortedInformation {
+	display: flex;
+	align-items: center;
+	// border: 1px solid #000;
+	height: 66px;
+	background-color: #fff;
+
+	.information-container {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		// border: 1px solid #000;
+		height: 80%;
+		padding-left: 10px;
+
+		.tag {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 70%;
+			margin-right: 10px;
+			color: var(--color-theme);
+			border: 1px solid var(--color-theme);
+			font-weight: bold;
+		}
+
+		.departure-and-arrival {
+			// border: 1px solid #000;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 70%;
+			margin-right: 10px;
+			span {
+				font-size: 16px;
+				font-weight: bold;
+			}
+
+			i {
+				margin: 0 10px;
+			}
+		}
+	}
+}

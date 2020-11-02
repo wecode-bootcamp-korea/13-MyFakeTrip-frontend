@@ -1,3 +1,39 @@
-div {
-	border: 1px solid #000;
+.AirTickets {
+	.ticket_search_container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		// border: 1px solid #000;
+		height: 90px;
+		background-color: var(--color-theme);
+
+		.ticket_search {
+			width: 50%;
+			height: 70%;
+			border: 1px solid #000;
+
+			span {
+				color: #fff;
+				font-weight: bold;
+			}
+
+			.search {
+			}
+		}
+	}
+
+	.ticket_list_container {
+		display: flex;
+		justify-content: center;
+		min-height: 670px;
+		padding-top: 20px;
+		background-color: #f5f6f7;
+		border: 1px solid #000;
+
+		.ticket_list_information {
+			display: flex;
+			// border: 1px solid #000;
+			width: 50%;
+		}
+	}
 }

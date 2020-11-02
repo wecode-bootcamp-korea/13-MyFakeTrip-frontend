@@ -1,0 +1,228 @@
+.AirTicketsAside {
+	// border: 1px solid #000;
+	width: 270px;
+	margin-right: 20px;
+	user-select: none;
+
+	> div > div:first-child {
+		cursor: pointer;
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.075);
+		}
+	}
+
+	.airlines {
+		padding: 10px 0;
+		// border: 1px solid #000;
+		border-top: 1px solid #dbdbdb;
+		.title {
+			display: flex;
+			justify-content: space-between;
+			// border: 1px solid #000;
+			height: 30px;
+			span {
+				// border: 1px solid #000;
+				display: flex;
+				align-items: center;
+				font-size: 15px;
+				font-weight: bold;
+			}
+
+			i {
+				display: flex;
+				align-items: center;
+				// border: 1px solid #000;
+				font-size: 20px;
+			}
+		}
+
+		.information {
+			height: 0;
+			visibility: hidden;
+			// border: 1px solid #000;
+			&.active {
+				height: auto;
+				visibility: visible;
+			}
+			.selection {
+				// border: 1px solid red;
+				span {
+					&:first-child {
+						position: relative;
+						margin-right: 10px;
+						&::after {
+							position: absolute;
+							top: 45%;
+							right: -5px;
+							content: '|';
+							transform: translateY(-50%);
+						}
+					}
+				}
+			}
+
+			.airline-list {
+				// border: 1px solid #000;
+
+				.airline-element {
+					display: flex;
+					align-items: center;
+					// border: 1px solid #000;
+					height: 30px;
+
+					input[type='checkbox'] {
+						width: 20px;
+						height: 20px;
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.time {
+		padding: 10px 0;
+		// border: 1px solid #000;
+		border-top: 1px solid #dbdbdb;
+
+		.title {
+			display: flex;
+			justify-content: space-between;
+			// border: 1px solid #000;
+			height: 30px;
+			span {
+				// border: 1px solid #000;
+				display: flex;
+				align-items: center;
+				font-size: 15px;
+				font-weight: bold;
+			}
+
+			i {
+				display: flex;
+				align-items: center;
+				// border: 1px solid #000;
+				font-size: 20px;
+			}
+		}
+
+		.information {
+			height: 0;
+			visibility: hidden;
+			// border: 1px solid #000;
+			&.active {
+				height: auto;
+				visibility: visible;
+			}
+
+			.time-list {
+				// border: 1px solid #000;
+
+				.time-element {
+					display: flex;
+					align-items: center;
+					// border: 1px solid #000;
+					height: 30px;
+
+					input[type='checkbox'] {
+						width: 20px;
+						height: 20px;
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.seat {
+		padding: 10px 0;
+		// border: 1px solid #000;
+		border-top: 1px solid #dbdbdb;
+
+		.title {
+			display: flex;
+			justify-content: space-between;
+			// border: 1px solid #000;
+			height: 30px;
+			span {
+				// border: 1px solid #000;
+				display: flex;
+				align-items: center;
+				font-size: 15px;
+				font-weight: bold;
+			}
+
+			i {
+				display: flex;
+				align-items: center;
+				// border: 1px solid #000;
+				font-size: 20px;
+			}
+		}
+
+		.information {
+			height: 0;
+			visibility: hidden;
+			// border: 1px solid #000;
+			&.active {
+				height: auto;
+				visibility: visible;
+			}
+
+			.seat-list {
+				// border: 1px solid #000;
+
+				.seat-element {
+					display: flex;
+					align-items: center;
+					// border: 1px solid #000;
+					height: 30px;
+
+					input[type='checkbox'] {
+						width: 20px;
+						height: 20px;
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.price-range {
+		padding: 10px 0;
+		// border: 1px solid #000;
+		border-top: 1px solid #dbdbdb;
+
+		.title {
+			display: flex;
+			justify-content: space-between;
+			// border: 1px solid #000;
+			height: 30px;
+			span {
+				// border: 1px solid #000;
+				display: flex;
+				align-items: center;
+				font-size: 15px;
+				font-weight: bold;
+			}
+
+			i {
+				display: flex;
+				align-items: center;
+				// border: 1px solid #000;
+				font-size: 20px;
+			}
+		}
+
+		.information {
+			height: 0;
+			visibility: hidden;
+			// border: 1px solid #000;
+			&.active {
+				height: auto;
+				visibility: visible;
+			}
+		}
+	}
+}
