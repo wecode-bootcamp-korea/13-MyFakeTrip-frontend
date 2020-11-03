@@ -4,6 +4,11 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
+    "@styled-icons/bootstrap": "^10.19.0",
+    "@styled-icons/boxicons-regular": "^10.18.0",
+    "@styled-icons/fa-solid": "^10.22.0",
+    "@styled-icons/feather": "^10.18.0",
+    "@styled-icons/heroicons-outline": "^10.19.0",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
