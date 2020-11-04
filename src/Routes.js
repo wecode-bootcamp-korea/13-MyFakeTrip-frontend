@@ -8,6 +8,7 @@ import Login from './pages/Login/Login.component';
 import Main from './pages/Main/Main.component';
 import Purchase from './pages/Purchase/Purchase.component';
 import SignUp from './pages/SignUp/SignUp.component';
+import HotelDetails from './pages/HotelDetails/HotelDetails.component';
 
 function Routes() {
 	return (
@@ -20,6 +21,7 @@ function Routes() {
 					<Route exact path="/signup" component={SignUp} />
 					<Route exact path="/purchase" component={Purchase} />
 					<Route exact path="/airtickets" component={AirTickets} />
+					<Route exact path="/hoteldetails" component={HotelDetails} />
 				</Switch>
 			</div>
 			<Footer />
