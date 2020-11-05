@@ -8,7 +8,7 @@ import { API, MOCK, REVIEWAPI } from '../../config';
 // Check state
 import { getTotalPrice } from '../../redux/hotels/hotels.actions';
 
-function HotelDetails({ history, getTotalPrice }) {
+function HotelDetails({ match, history, getTotalPrice }) {
 	const [hotelDetailData, setHotelDetailData] = useState(null);
 	const [reviewData, setReviewData] = useState(null);
 	const [optionPrice, setOptionPrice] = useState([]);
@@ -29,36 +29,36 @@ function HotelDetails({ history, getTotalPrice }) {
 
 	const [averageRating, setAverageRating] = useState();
 
-	useEffect(() => {
-		// 호텔별 디테일 fetch
-		fetch(MOCK)
-			.then((res) => res.json())
-			.then((res) => {
-				setHotelDetailData(res);
-				setOptionPrice(res.hotel_add_prices);
-				setTotalPrice(
-					new Intl.NumberFormat().format(res.hotel_detail.basic_price),
-				);
-				setBasicPrice(Number(res.hotel_detail.basic_price));
-			});
-		// 리뷰받는 fetch
-		fetch(REVIEWAPI)
-			.then((res) => res.json())
-			.then((res) => setReviewData(res));
-	}, []);
-
 	// useEffect(() => {
-	// 호텔 디테일 fetch
-	// 	fetch(`${API}/${props.match.params.id}`, {
-	// 		headers: { Authorization: token },
-	// 	})
+	// 	// 호텔별 디테일 fetch
+	// 	fetch(MOCK)
 	// 		.then((res) => res.json())
-	// 		.then((res) => setHotelDetailData(res));
+	// 		.then((res) => {
+	// 			setHotelDetailData(res);
+	// 			setOptionPrice(res.hotel_add_prices);
+	// 			setTotalPrice(
+	// 				new Intl.NumberFormat().format(res.hotel_detail.basic_price),
+	// 			);
+	// 			setBasicPrice(Number(res.hotel_detail.basic_price));
+	// 		});
 	// 	// 리뷰받는 fetch
-	// 	fetch(`${REVIEWAPI}/${props.match.params.id}`)
+	// 	fetch(REVIEWAPI)
 	// 		.then((res) => res.json())
 	// 		.then((res) => setReviewData(res));
 	// }, []);
+
+	useEffect(() => {
+		// 호텔 디테일 fetch
+		fetch(`${API}/${match.params.id}`, {
+			// headers: { Authorization: token },
+		})
+			.then((res) => res.json())
+			.then((res) => setHotelDetailData(res));
+		// 리뷰받는 fetch
+		fetch(`${REVIEWAPI}/${match.params.id}`)
+			.then((res) => res.json())
+			.then((res) => setReviewData(res));
+	}, []);
 
 	const goToResult = () => {
 		getTotalPrice(Number(totalPrice.replace(',', '')));

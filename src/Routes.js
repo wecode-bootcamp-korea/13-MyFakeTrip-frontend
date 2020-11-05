@@ -9,6 +9,8 @@ import SignUp from './pages/SignUp/SignUp.component';
 import AirTicketsContainer from './pages/AirTickets/AirTickets.container';
 import HotelDetails from './pages/HotelDetails/HotelDetails.component';
 import './style/common.scss';
+import HotelList from './pages/HotelList/HotelList.component';
+
 import './Routes.scss';
 
 function Routes() {
@@ -22,6 +24,7 @@ function Routes() {
 					<Route exact path="/signup" component={SignUp} />
 					<Route path="/purchase/:purchase_type" component={Purchase} />
 					<Route exact path="/airtickets" component={AirTicketsContainer} />
+					<Route exact path="/hotellist" component={HotelList} />
 					<Route exact path="/hoteldetails/:id" component={HotelDetails} />
 				</Switch>
 			</div>
