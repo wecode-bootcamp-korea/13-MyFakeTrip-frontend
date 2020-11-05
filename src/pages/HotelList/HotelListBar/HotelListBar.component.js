@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styled, { ThemeProvider } from 'styled-components';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
@@ -10,7 +10,7 @@ import theme from '../../../theme';
 import CountPerson from './CountPerson/CountPerson.component';
 import Region from './Region/Region.component';
 
-let onOff;
+let onOff, onOffBtn;
 
 const HotelListBar = ({
 	countData,
@@ -19,6 +19,7 @@ const HotelListBar = ({
 	onRegion,
 	regionData,
 	regionArrData,
+	cityArrData,
 }) => {
 	// const [value, setValue] = useState('');
 
@@ -38,16 +39,75 @@ const HotelListBar = ({
 		onRegion(e);
 	};
 
+	const [fixDate, setFixDate] = useState();
+
 	const [onOffState, setOnOff] = useState({ onOff: false });
+
+	const [onOffRegion, setOnOffRegion] = useState({ onOff: false });
+
+	const changeDateResultToKR = (e) => {
+		const [start, end] = e.target.value.split(' - ');
+		const startSplit = start.split('/');
+		const endSplit = end.split('/');
+		const dateText = ['월', '일', '년'];
+		e.target.value = dateText
+			.reduce(
+				([start, end], cur, idx) => {
+					const nextStart = start + startSplit[idx] + cur;
+					const nextEnd = end + endSplit[idx] + cur;
+					return [nextStart, nextEnd];
+				},
+				['', ''],
+			)
+			.join(' - ');
+	};
+
+	const changeDateResult = (str) => {
+		const [start, end] = str.split(' - ');
+		const startSplit = start.split('/');
+		const endSplit = end.split('/');
+		const dateText = ['월', '일', '년'];
+		return dateText
+			.reduce(
+				([start, end], cur, idx) => {
+					const nextStart = start + startSplit[idx] + cur;
+					const nextEnd = end + endSplit[idx] + cur;
+					return [nextStart, nextEnd];
+				},
+				['', ''],
+			)
+			.join(' - ');
+	};
+
+	const changeDateForRangePicker = (str) => {
+		const [start, end] = str.split(' - ');
+		const startSplit = start.split('/');
+		const endSplit = end.split('/');
+		const ko = ['월', '일', '년'];
+		return (
+			startSplit.reduce((acc, cur, idx) => acc + cur + ko[idx], '') +
+			' - ' +
+			endSplit.reduce((acc, cur, idx) => acc + cur + ko[idx], '')
+		);
+	};
+
+	useEffect(() => {
+		document.querySelector('.hotel-date').value = changeDateForRangePicker(
+			document.querySelector('.hotel-date').value,
+		);
+	}, []);
 
 	const handleOnOffBtn = () => {
 		onOff = onOffState;
 		setOnOff({ ...onOff, onOff: !onOffState.onOff });
 	};
 
-	let person = `총 ${countData.adultCount + countData.childCount} 명`;
+	const handleOnOffRegion = () => {
+		onOffBtn = onOffRegion;
+		setOnOffRegion({ ...onOffBtn, onOff: !onOffBtn.onOff });
+	};
 
-	console.log(onOffState.onOff);
+	let person = `총 ${countData.adultCount + countData.childCount} 명`;
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -58,18 +118,23 @@ const HotelListBar = ({
 						<input value={regionData} />
 						<Region
 							onRegion={handleRegion}
+							onOffData={onOffRegion}
 							regionData={regionData}
 							regionArrData={regionArrData}
+							cityArrData={cityArrData}
 						/>
+						<div onClick={handleOnOffRegion}>
+							<OnOffDiv onOff={onOffRegion.onOff}>
+								<i className="fas fa-angle-down" />
+							</OnOffDiv>
+							<OnOffDiv onOff={!onOffRegion.onOff}>
+								<i className="fas fa-angle-up" />
+							</OnOffDiv>
+						</div>
 					</label>
 					<label>
-						<DateRangePicker
-							initialSettings={{
-								startDate: '11/15/2020',
-								endDate: '11/20/2020',
-							}}
-						>
-							<input />
+						<DateRangePicker onApply={changeDateResultToKR}>
+							<input className="hotel-date" />
 						</DateRangePicker>
 					</label>
 					<label>
@@ -134,6 +199,10 @@ const Container = styled.div`
 			outline: none;
 			font-size: 16px;
 			flex: 3;
+
+			&.hotel-date {
+				text-align: center;
+			}
 		}
 	}
 `;

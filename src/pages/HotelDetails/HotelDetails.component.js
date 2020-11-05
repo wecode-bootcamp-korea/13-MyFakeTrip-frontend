@@ -7,8 +7,7 @@ import SideBarMain from './SideBarMain/SideBarMain.component';
 import { API, MOCK, REVIEWAPI } from '../../config';
 import { getTotalPrice } from '../../redux/hotels/hotels.actions';
 
-// Check state
-function HotelDetails({ history, getTotalPrice, match }) {
+function HotelDetails({ match, history, getTotalPrice }) {
 	const [hotelDetailData, setHotelDetailData] = useState(null);
 	const [reviewData, setReviewData] = useState(null);
 	const [optionPrice, setOptionPrice] = useState([]);

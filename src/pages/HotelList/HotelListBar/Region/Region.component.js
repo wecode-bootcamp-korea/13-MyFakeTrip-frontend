@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Region = ({ onRegion, regionData, regionArrData }) => {
-	const cityArr = ['서울', '인천', '의왕', '부산', '정현', '예진'];
+const cityArr = ['서울', '인천', '부산', '대구', '광주'];
 
+const Region = ({ onRegion, onOffData, cityArrData, regionArrData }) => {
 	const handleRegion = (e) => {
 		onRegion(e);
 	};
 
-	console.log(regionData);
-
 	return (
 		<>
-			<Container>
+			<Container onOff={onOffData.onOff}>
 				<RegionDiv>
 					<div>지역</div>
 					<ul>
@@ -27,11 +25,12 @@ const Region = ({ onRegion, regionData, regionArrData }) => {
 				<CityDiv>
 					<div>도시</div>
 					<ul>
-						{cityArr.map((item, idx) => (
-							<li onClick={handleRegion} data-name={item} key={idx}>
-								{item}
-							</li>
-						))}
+						{cityArr !== undefined &&
+							cityArr.map((item, idx) => (
+								<li onClick={handleRegion} data-name={item} key={idx}>
+									{item}
+								</li>
+							))}
 					</ul>
 				</CityDiv>
 			</Container>
@@ -42,6 +41,7 @@ const Region = ({ onRegion, regionData, regionArrData }) => {
 export default Region;
 
 const Container = styled.div`
+	display: ${(props) => (props.onOff ? 'block' : 'none')};
 	width: 120%;
 	position: absolute;
 	top: 60px;

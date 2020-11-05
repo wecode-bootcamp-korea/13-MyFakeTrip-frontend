@@ -62,9 +62,6 @@ const HotelListMainLeft = ({
 		dynamicSliderData.dynamicValue.length !== 0 &&
 		dynamicSliderData.dynamicValue[1];
 
-	// aria-disabled={themeData}
-	// console.log('theme =>', themeData.includes(true));
-
 	return (
 		<Container big>
 			<Button map>

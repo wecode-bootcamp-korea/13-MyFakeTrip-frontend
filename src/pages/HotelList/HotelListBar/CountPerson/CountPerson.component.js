@@ -13,8 +13,6 @@ const CountPerson = ({ countData, onDecrease, onIncrease, onOffData }) => {
 		onDecrease(e);
 	};
 
-	console.log('onOffData =>', onOffData.onOff);
-
 	return (
 		<Container onOff={onOffData.onOff}>
 			<header>
