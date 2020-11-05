@@ -1,8 +1,10 @@
 import React from 'react';
-import './Footer.styles.scss';
+import styled from 'styled-components';
 
 function Footer() {
-	return <div className="Footer"></div>;
+	return <FooterCon></FooterCon>;
 }
 
 export default Footer;
+
+const FooterCon = styled.div``;
