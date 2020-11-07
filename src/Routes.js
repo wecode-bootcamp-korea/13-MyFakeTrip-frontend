@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Nav from "./components/Nav/Nav.component";
+import Search from "./components/Search/Search.component";
 import Footer from "./components/Footer/Footer.component";
 import AirTickets from "./pages/AirTickets/AirTickets.component";
 import Login from "./pages/Login/Login.component";
@@ -13,6 +14,7 @@ function Routes() {
   return (
     <div className="Routes">
       <Nav />
+      <Search />
       <div className="container">
         <Switch>
           <Route exact path="/" component={Main} />
