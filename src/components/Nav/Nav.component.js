@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.styles.scss";
-import { SearchOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  RightCircleFilled,
+  QuestionCircleOutlined,
+} from "@ant-design/icons";
 
 function Nav() {
   return (
