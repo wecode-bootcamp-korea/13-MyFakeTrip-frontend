@@ -1,5 +1,6 @@
 import React from "react";
 import "./Signup.styles.scss";
+import KaKaoLogin from "react-kakao-login";
 
 function Signup() {
   return (
@@ -17,6 +18,12 @@ function Signup() {
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxwYXRoIGZpbGw9IiMzODFFMUYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTkgNEM1LjY4NiA0IDMgNi4xMjQgMyA4Ljc0M2MwIDEuNzA1IDEuMTM4IDMuMiAyLjg0NiA0LjAzNi0uMTI1LjQ2OC0uNDU0IDEuNjk3LS41MiAxLjk2LS4wODEuMzI2LjEyLjMyMi4yNTEuMjM0LjEwNC0uMDY4IDEuNjQ0LTEuMTE2IDIuMzEtMS41NjguMzYuMDUzLjczMi4wODIgMS4xMTMuMDgyIDMuMzE0IDAgNi0yLjEyNCA2LTQuNzQ0QzE1IDYuMTIzIDEyLjMxNCA0IDkgNCIvPgo8L3N2Zz4KCg=="></img>
           카카오로 계속하기
         </button>
+        {/* <KaKaoBtn
+          jsKey={"c681ae9bdf335412b545a06745075497"}
+          buttonText="카카오로 계속하기"
+          onSuccess={this.responseKaKao}
+          getProfile={true}
+        /> */}
         <div className="social_login">
           <a href="#">
             <img src="https://www.myrealtrip.com/webpack/9585685fa907724c219483be5f7fcfda.svg"></img>{" "}
