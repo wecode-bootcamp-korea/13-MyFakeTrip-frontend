@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 // eslint-disable-next-line prettier/prettier
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-const Signup = () => {
+
+const SignUp = () => {
   const handleSocialLogiIn = () => {
     window.Kakao.Auth.login({
       success: function (authObj) {
@@ -36,7 +37,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   useEffect(() => {
-    window.Kakao.init("c681ae9bdf335412b545a06745075497");
+    // window.Kakao.init("c681ae9bdf335412b545a06745075497");
     console.log(email, password);
   }, [email, password]);
   function handleInputEmail(e) {
@@ -92,7 +93,7 @@ const Signup = () => {
             />
             네이버
           </NaverLogin>
-          <Link to="/loginemail">
+          <Link to="/signupemail">
             <EmailLogin>
               <EmailIcon
                 src="https://www.myrealtrip.com/webpack/6aac3c05928e0b3db40bbcad0548b3a1.svg"
@@ -199,4 +200,4 @@ const CreateOne = styled(Link)`
   text-decoration: underline;
   color: #666d75;
 `;
-export default Signup;
+export default SignUp;
