@@ -1,24 +1,52 @@
-/* eslint-disable prettier/prettier */
-import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
-import {useForm} from "react-hook-form";
+/* eslint-disable react-hooks/rules-of-hooks */
+// eslint-disable-next-line prettier/prettier
+import React, { useState, useEffect } from "react";
+// eslint-disable-next-line prettier/prettier
+import { Link } from "react-router-dom";
+// eslint-disable-next-line prettier/prettier
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 const Signup = () => {
+  const handleSocialLogiIn = () => {
+    window.Kakao.Auth.login({
+      success: function (authObj) {
+        console.log(JSON.stringify(authObj));
+        fetch("http://10.58.6.219:8000/users/signin/kakao", {
+          method: "GET",
+          headers: {
+            Authorization: authObj.access_token,
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res.access_token);
+            localStorage.setItem("Kakao_token", res.access_token);
+            if (res.access_token) {
+              alert("Successfully logged in!");
+              this.props.history.push("/");
+              window.location.reload();
+            }
+          });
+      },
+      fail: function (error) {
+        alert(JSON.stringify(error));
+      },
+    });
+  };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   useEffect(() => {
+    window.Kakao.init("c681ae9bdf335412b545a06745075497");
     console.log(email, password);
   }, [email, password]);
-  function handleInput(e) {
-    console.log("email", e.target.value);
+  function handleInputEmail(e) {
     setEmail(e.target.value);
   }
-  const passwordInput = (e) => {
-    console.log("password", e.target.value);
-    return setPassword(e.target.value);
-  };
-  const signUp = () => {
-    fetch("http://10.58.6.219:8000/account/signup", {
+  function handleInputPassword(e) {
+    setPassword(e.target.value);
+  }
+  const isLogin = () => {
+    fetch("http://10.58.6.219:8000/users/signin/kakao", {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -26,165 +54,149 @@ const Signup = () => {
       }),
     })
       .then((res) => res.json())
-      .then((result) => {
-        console.log("결과", result);
-      });
+      .then((result) => console.log("결과:", result));
   };
-  const {register, handleSubmit, errors} = useForm();
-  const onSubmit = (data) => {
-    console.log(">>>>", data);
+  // eslint-disable-next-line prettier/prettier
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (values) => {
+    console.log(values);
   };
   return (
     <Wrapper>
-      <Title>create an account</Title>
-      <PwRequirements>
-        <AccountTitle>Password strength requirements</AccountTitle>
-        <PwConditions>
-          <ConditionList> At least 8 characters</ConditionList>
-          <ConditionList>At least 1 number ( 0-9 )</ConditionList>
-          <ConditionList>
-            At least 1 special character (e.g. !, @, #, $, %, -, &,*)
-          </ConditionList>
-          <ConditionList>At least 1 alphabet ( a-z )</ConditionList>
-        </PwConditions>
-      </PwRequirements>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <InputBox>
-          <EmailBox
-            autoComplete="off"
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={handleInput}
-            ref={register({
-              required: "❗️Email is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "❗️Enter a valid email address",
-              },
-            })}
+      <Container>
+        <Image
+          src="https://www.myrealtrip.com/webpack/66066a48489320a05330e36ba701d7e6.png"
+          alt="welcome hand"
+        />
+        <Title>반갑습니다!</Title>
+        <Desc>여행의 모든 것, 마이리얼트립</Desc>
+        <KakaoBtn onClick={handleSocialLogiIn}>
+          <KakaoIcon
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICAgIDxwYXRoIGZpbGw9IiMzODFFMUYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTkgNEM1LjY4NiA0IDMgNi4xMjQgMyA4Ljc0M2MwIDEuNzA1IDEuMTM4IDMuMiAyLjg0NiA0LjAzNi0uMTI1LjQ2OC0uNDU0IDEuNjk3LS41MiAxLjk2LS4wODEuMzI2LjEyLjMyMi4yNTEuMjM0LjEwNC0uMDY4IDEuNjQ0LTEuMTE2IDIuMzEtMS41NjguMzYuMDUzLjczMi4wODIgMS4xMTMuMDgyIDMuMzE0IDAgNi0yLjEyNCA2LTQuNzQ0QzE1IDYuMTIzIDEyLjMxNCA0IDkgNCIvPgo8L3N2Zz4KCg=="
+            alt="kakao icon"
           />
-        </InputBox>
-        {errors.email && <Required> {errors.email.message}</Required>}
-        <InputBox>
-          <PwBox
-            autoComplete="off"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={passwordInput}
-            ref={register({
-              required: "❗️Password is required",
-              pattern: {
-                value: /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%-&*]).*$/,
-                message: "❗️Password strength invalid.",
-              },
-            })}
-          />
-        </InputBox>
-        {errors.password && <Required>{errors.password.message}</Required>}
-        <Button type="submit" onClick={signUp}>
-          CONTINUE
-        </Button>
-      </form>
-      <Question>
-        Have an account already?<NLink to="/Login">Log in here</NLink>
-      </Question>
+          카카오로 바로 시작
+        </KakaoBtn>
+        <Icons>
+          <FacebookLogin>
+            <FacebookIcon
+              src="https://www.myrealtrip.com/webpack/9585685fa907724c219483be5f7fcfda.svg"
+              alt="facebook icon"
+            />
+            페이스북
+          </FacebookLogin>
+          <NaverLogin>
+            <NaverIcon
+              src="https://www.myrealtrip.com/webpack/2c3e797d1b2ac9ab2db1fb4bfb9d6b3c.svg"
+              alt="naver icon"
+            />
+            네이버
+          </NaverLogin>
+          <Link to="/loginemail">
+            <EmailLogin>
+              <EmailIcon
+                src="https://www.myrealtrip.com/webpack/6aac3c05928e0b3db40bbcad0548b3a1.svg"
+                alt="email icon"
+              />
+              이메일
+            </EmailLogin>
+          </Link>
+        </Icons>
+        <CreateAccount>
+          이미 아이디가 있으신가요? <CreateOne to="/login"> 로그인 </CreateOne>
+        </CreateAccount>
+      </Container>
     </Wrapper>
   );
 };
 const Wrapper = styled.div`
-  width: 480px;
-  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 430px;
+  height: 450px;
+  border: 1px solid #e9ecef;
+`;
+const Image = styled.img`
+  width: 56px;
+  height: 56px;
+  margin: 40px 0;
 `;
 const Title = styled.h1`
-  font-size: 45px;
-  font-weight: 400;
+  font-size: 28px;
+  font-weight: 700;
+  color: #343a40;
   text-align: center;
 `;
-const PwRequirements = styled.div`
-  width: 440px;
-  height: 180px;
-  background-color: #fafafa;
-  border-radius: 4px;
-  margin-top: 60px;
-  padding: 20px;
+const Desc = styled.span`
+  font-size: 16px;
+  font-weight: 700;
+  color: #666d75;
+  text-align: center;
+  margin-bottom: 20px;
 `;
-const AccountTitle = styled.h4`
-  font-size: 20px;
-  line-height: 31px;
-  letter-spacing: 1px;
-  color: #4c5150;
-  text-align: left;
-  font-weight: 500;
-`;
-const PwConditions = styled.ul`
-  color: #878e8d;
-  display: block;
-  padding: 10px 0 10px 30px;
-`;
-const ConditionList = styled.li`
-  font-size: 14px;
-  line-height: 23px;
-  letter-spacing: 0.5px;
-`;
-const InputBox = styled.div`
-  margin-top: 15px;
-`;
-const Required = styled.p`
-  font-size: 12px;
-  color: #d91022;
-  padding-top: 7px;
-`;
-const EmailBox = styled.input`
-  width: 440px;
-  height: 46px;
-  font-size: 14px;
-  padding: 5.5px 0 11.5px 14px;
-  border: 1px solid #c1cac8;
-  background-color: #fafafa;
-  ::placeholder {
-    color: #a5adab;
-  }
-  :focus {
-    outline: 1px solid transparent;
-    border-color: #8ce2d0;
-  }
-`;
-const PwBox = styled.input`
-  width: 440px;
-  height: 46px;
-  font-size: 14px;
-  padding: 5.5px 0 11.5px 14px;
-  border: 1px solid #c1cac8;
-  background-color: #fafafa;
-  ::placeholder {
-    color: #a5adab;
-  }
-  :focus {
-    outline: 1px solid transparent;
-    border-color: #8ce2d0;
-  }
-`;
-const Button = styled.button`
-  width: 440px;
-  height: 46px;
-  margin-top: 20px;
-  color: #c1cac8;
-  background-color: #e6ebea;
-  border: 1px solid transparent;
+const KakaoBtn = styled.button`
+  width: 332px;
+  height: 48px;
+  background-color: #f7e316;
+  color: #381e1f;
+  text-align: center;
   border-radius: 3px;
-  letter-spacing: 2.5px;
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 25px;
 `;
-const Question = styled.p`
+const KakaoIcon = styled.img`
+  width: 20px;
+  margin-right: 5px;
+`;
+const Icons = styled.div`
+  display: flex;
+  margin-bottom: 45px;
+`;
+const FacebookIcon = styled.img`
+  width: 20px;
+  padding-right: 5px;
+`;
+const FacebookLogin = styled.span`
+  color: #666d75;
+  font-size: 15px;
+  font-weight: 600;
+  padding-right: 20px;
+`;
+const NaverIcon = styled.img`
+  width: 20px;
+  padding-right: 5px;
+`;
+const NaverLogin = styled.span`
+  color: #666d75;
+  font-size: 15px;
+  font-weight: 600;
+  padding-right: 20px;
+`;
+const EmailIcon = styled.img`
+  width: 20px;
+  padding-right: 5px;
+`;
+const EmailLogin = styled.span`
+  color: #666d75;
+  font-size: 15px;
+  font-weight: 600;
+`;
+const CreateAccount = styled.p`
   text-align: center;
   font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.75px;
-  color: #4c5150;
-  margin-top: 25px;
+  font-weight: 600;
+  color: #848c94;
 `;
-const NLink = styled(Link)`
-  color: #2fa79b;
+const CreateOne = styled(Link)`
+  text-decoration: underline;
+  color: #666d75;
 `;
 export default Signup;
