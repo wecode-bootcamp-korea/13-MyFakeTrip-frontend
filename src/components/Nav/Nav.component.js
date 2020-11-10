@@ -6,6 +6,7 @@ import {
   RightCircleFilled,
   QuestionCircleOutlined,
 } from "@ant-design/icons";
+import SearchBar from "../SearchBar/SearchBar.component";
 
 function Nav() {
   return (
@@ -61,6 +62,7 @@ function Nav() {
             <a href="#">할인혜택</a>
           </li>
         </ul>
+        <SearchBar />
       </div>
     </div>
   );

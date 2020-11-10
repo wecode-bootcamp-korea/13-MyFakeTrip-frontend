@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Nav.styles.scss";
+// import "../Nav/Nav.styles.scss";
+import "./SearchBar.styles.scss";
 import { RightCircleFilled, QuestionCircleOutlined } from "@ant-design/icons";
 
 function SearchBar() {
