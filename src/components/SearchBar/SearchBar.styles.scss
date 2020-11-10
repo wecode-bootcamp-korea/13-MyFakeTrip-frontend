@@ -1,0 +1,85 @@
+.SearchBar {
+  margin: 15px 125px;
+  .flight {
+    display: flex;
+    justify-content: space-between;
+    .stopover {
+      ul {
+        display: flex;
+        li {
+          margin: 5px;
+          padding: 7px;
+          position: relative;
+          opacity: 0.5;
+          &:focus {
+            border-bottom: 2px solid #ffffff;
+            opacity: 1;
+          }
+          a {
+            color: #ffffff;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .booking {
+      ul {
+        display: flex;
+        li {
+          margin: 5px;
+          padding: 7px;
+          a {
+            color: #ffffff;
+            font-size: 14px;
+            margin-right: 5px;
+          }
+          .icon {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+  form {
+    display: flex;
+    input {
+      height: 50px;
+      margin-right: 3px;
+      border-radius: 3px;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+    .first {
+      width: 425px;
+    }
+    .second {
+      width: 290px;
+    }
+    .third {
+      width: 270px;
+    }
+    .button {
+      width: 75px;
+      background-color: #f94877;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+  .checkbox {
+    color: #ffffff;
+    margin-top: 10px;
+    label {
+      margin-right: 15px;
+      input {
+        margin-right: 5px;
+      }
+    }
+    .diff_route {
+      padding-left: 15px;
+      border-left: 1px solid #ffffff;
+    }
+  }
+}

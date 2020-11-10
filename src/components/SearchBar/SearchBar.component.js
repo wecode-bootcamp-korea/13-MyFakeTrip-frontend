@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "../Nav/Nav.styles.scss";
-import "./SearchBar.styles.scss";
+import "./Search.styles.scss";
 import { RightCircleFilled, QuestionCircleOutlined } from "@ant-design/icons";
-
 function SearchBar() {
   return (
-    <div className="SearchBar">
+    <div className="Search">
       <div className="flight">
         <div className="stopover">
           <ul>
@@ -55,5 +53,4 @@ function SearchBar() {
     </div>
   );
 }
-
 export default SearchBar;
