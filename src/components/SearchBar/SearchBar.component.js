@@ -40,11 +40,11 @@ function SearchBar() {
             setModal(true);
           }}
         ></input>
-        {modal ? <Modal /> : null}
         <input className="second"></input>
         <input className="third"></input>
         <input className="button" type="submit" value="검색"></input>
       </form>
+      {modal ? <Modal /> : null}
       <div className="checkbox">
         <label>
           <input type="checkbox" />

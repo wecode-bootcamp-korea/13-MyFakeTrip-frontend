@@ -12,7 +12,7 @@ import SignUp from "./pages/SignUp/SignUp.component";
 function Routes() {
   return (
     <div className="Routes">
-      <Nav />
+      {/* <Nav /> */}
       <div className="container">
         <Switch>
           <Route exact path="/" component={Main} />
