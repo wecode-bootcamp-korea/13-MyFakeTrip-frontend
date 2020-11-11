@@ -16,9 +16,35 @@ function Modal() {
           <Title>주요도시 바로 선택</Title>
           <Cities>
             <tr>
-              <td rowSpan="2">국내</td>
-              <td>인천</td>
-              <td>김포</td>
+              <th scope="row" rowSpan="2">
+                국내
+              </th>
+              <td>
+                <a href="#">인천</a>
+              </td>
+              <td>
+                <a href="#">김포</a>
+              </td>
+              <td>
+                <a href="#">부산</a>
+              </td>
+              <td>
+                <a href="#">제주</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#">무안</a>
+              </td>
+              <td>
+                <a href="#">청주</a>
+              </td>
+              <td>
+                <a href="#">대구</a>
+              </td>
+              <td>
+                <a href="#">양양</a>
+              </td>
             </tr>
           </Cities>
         </Select>
@@ -73,10 +99,14 @@ const Title = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #343a40;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 const Cities = styled.table`
+  padding: 5px 0;
+  border-top: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
   width: 100%;
+  text-align: left;
 `;
 
 export default Modal;
