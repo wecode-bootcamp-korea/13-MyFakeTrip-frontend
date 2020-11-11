@@ -1,11 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.styles.scss";
-import {
-  SearchOutlined,
-  RightCircleFilled,
-  QuestionCircleOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import SearchBar from "../SearchBar/SearchBar.component";
 
 function Nav() {
@@ -14,7 +10,7 @@ function Nav() {
       <nav className="nav_bar">
         <div className="left">
           <Link to="/">
-            <img src="data/myrealtrip_logo.png" alt="myrealtrip_logo" />
+            <img src="data/faketrip.png" alt="myrealtrip_logo" />
           </Link>
           <div className="search">
             <SearchOutlined className="icon" />

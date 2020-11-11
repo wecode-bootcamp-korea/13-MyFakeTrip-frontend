@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Search.styles.scss";
 import { RightCircleFilled, QuestionCircleOutlined } from "@ant-design/icons";
+import Modal from "./Modal.component";
 function SearchBar() {
+  let [modal, setModal] = useState(false);
   return (
     <div className="Search">
       <div className="flight">
@@ -33,7 +34,13 @@ function SearchBar() {
         </div>
       </div>
       <form>
-        <input className="first"></input>
+        <input
+          className="first"
+          onClick={() => {
+            setModal(true);
+          }}
+        ></input>
+        {modal ? <Modal /> : null}
         <input className="second"></input>
         <input className="third"></input>
         <input className="button" type="submit" value="검색"></input>
