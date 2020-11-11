@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FaSearch } from "react-icons/fa";
 
 function Nav() {
   return (
@@ -9,10 +8,7 @@ function Nav() {
       <Header>
         <div>
           <img src="./data/whitefaketrip.png" alt="myfaketrip logo white" />
-          <input
-            type="text"
-            placeholder="여행지나 상품을 검색해보세요"
-          ></input>{" "}
+          <input type="text" placeholder="여행지나 상품을 검색해보세요" />
         </div>
         <Linkto>
           <a href="#">파트너 등록하기</a>
