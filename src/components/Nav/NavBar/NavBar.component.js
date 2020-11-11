@@ -71,7 +71,7 @@ const Linkto = styled.div`
 const List = styled.div`
   a {
     margin-right: 30px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     color: rgba(255, 255, 255, 0.6);
     font-size: 15px;
     position: relative;

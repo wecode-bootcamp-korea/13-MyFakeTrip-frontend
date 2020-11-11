@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "./Modal.component";
 import styled from "styled-components";
-
 function SearchBar() {
   let [modal, setModal] = useState(false);
+  let [destination, setDestination] = useState("서울(SEL)");
+
   return (
     <Wrapper>
       <Header>
@@ -19,16 +20,16 @@ function SearchBar() {
         </div>
       </Header>
       <Form>
-        <input type="text" placeholder="서울(SEL)" />
-        <input type="text" placeholder="도착지가 어디인가요?" />
-        <input type="text" />
-        <input type="text" placeholder="승객 1명, 일반석" />
-        <input type="submit" value="검색" />
+        <div
+          onClick={() => {
+            setModal(!modal);
+          }}
+        ></div>
+        <div></div>
+        <div></div>
+        <button>검색</button>
       </Form>
-      <Check>
-      <label><input type="checkbox">직항만</label>
-      <label><input type="checkbox">무료 수하물 가능</label>
-      </Check>
+      {Modal ? <Modal /> : null}
     </Wrapper>
   );
 }
@@ -40,9 +41,45 @@ const Wrapper = styled.div`
   background-color: black;
 `;
 const Header = styled.div`
-display: flex;
+  display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  span {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    padding: 0 10px 7px 10px;
+    &:hover {
+      color: #ffffff;
+      border-bottom: 1px solid #ffffff;
+    }
+  }
+  a {
+    color: #ffffff;
+  }
+`;
+const Form = styled.div`
+  display: flex;
+  div {
+    background-color: #ffffff;
+    height: 50px;
+    border-radius: 2px;
+    margin-right: 5px;
+    padding: 10px;
+    position: relative;
+  }
+  button {
+    width: 70px;
+    height: 50px;
+    border: none;
+    border-radius: 2px;
+    margin-right: 5px;
+    background-color: #51abf3;
+    color: #ffffff;
+    font-size: 16px;
+    &:focus {
+      outline: none;
+    }
+  }
 `;
 
 export default SearchBar;
