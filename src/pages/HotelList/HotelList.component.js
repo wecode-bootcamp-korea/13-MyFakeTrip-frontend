@@ -193,7 +193,7 @@ const HotelList = () => {
 			.then((result) => {
 				setHotelList(result.hotels);
 				setHotelTotal(result.total_hotels);
-				setLoading(true);
+				setLoading(false);
 			});
 	};
 
@@ -234,6 +234,7 @@ const HotelList = () => {
 				.then((result) => {
 					setHotelList(result.hotels);
 					setHotelTotal(result.total_hotels);
+					console.log('결과 =>', result);
 					setLoading(false);
 				});
 		}
@@ -357,7 +358,7 @@ const HotelList = () => {
 export default HotelList;
 
 const Container = styled.div`
-	max-width: 70%;
+	width: 1140px;
 	display: flex;
 	margin: 0 auto;
 `;

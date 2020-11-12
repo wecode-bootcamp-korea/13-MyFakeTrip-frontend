@@ -89,12 +89,13 @@ const HotelInfo = styled.div`
 		&:first-child {
 			font-size: 18px;
 			font-weight: 600;
+			padding-bottom: 8px;
 		}
 	}
 `;
 
 const HotelReview = styled.div`
-	padding-top: 39px;
+	padding-top: 56px;
 	display: flex;
 	align-items: center;
 	div {
@@ -134,24 +135,32 @@ const PriceDiv = styled.div`
 		margin: 0 auto;
 		text-align: end;
 		&:first-child {
+			margin-top: 2px;
 			border-bottom: 1px solid #ccc;
+			del {
+				margin-right: 8px;
+			}
 			p {
 				background-color: #ffcccc;
 				color: red;
-				width: 80%;
+				width: 140px;
 				border-radius: 8px;
 				font-weight: 600;
 				margin: 8px 0 4px auto;
+				padding: 6px 9px 1px 4px;
 			}
 		}
 		&:last-child {
+			margin-right: 30px;
+			padding-top: 4px;
 			p {
-				padding-top: 8px;
+				padding-top: 14px;
+				padding-bottom: 4px;
 				margin: 0;
 			}
 			span {
 				span {
-					font-size: 21px;
+					font-size: 27px;
 					font-weight: 600;
 				}
 			}

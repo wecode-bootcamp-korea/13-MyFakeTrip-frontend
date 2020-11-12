@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-import { Link, useHistory } from 'react-router-dom';
+import { clearToken } from '../../redux/user/user.actions';
+
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 // import List from "./List.componenet";
 
-function Nav() {
-	const [isLogin, setIsLogin] = useState(false);
-	const [isFocus, setIsFocus] = useState(false);
-	const history = useHistory();
-	const [inputValue, setInputValue] = useState('');
-	const [isClick, setIsClick] = useState(false);
-	const [isSearchActive, setIsSearchActive] = useState(true);
-	const [isHotel, setIsHotel] = useState(false);
-	// console.log(history.location.pathname, "sdfklsdlfjlksdfklsjf");
-
-	useEffect(() => {
-		// console.log(history.location.pathname);
-		if (history.location.pathname !== '/') {
-			setIsSearchActive(false);
-		}
-	}, [history.location.pathname]);
+function Nav({ clearToken, userToken }) {
+	const loginOrLogout = () => {
+		clearToken();
+	};
 
 	return (
 		<NavBar>
 			<Header>
 				<div>
-					<img src="./data/faketrip.png" alt="myfaketrip logo" />
+					<Link to="/">
+						<img
+							src="https://media.vlpt.us/images/jian/post/a5aa6b15-69a1-4ec2-ac59-db10e1c5eafc/faketrip.png"
+							alt="myfaketrip logo"
+						/>
+					</Link>
 					<input type="text" placeholder="여행지나 상품을 검색해보세요" />
 				</div>
 				<Linkto>
 					<Link to="#">파트너 등록하기</Link>
-					<Link to="/login">로그인</Link>
-					<Link to="/signup">회원가입</Link>
+					<Link to="/login" onClick={loginOrLogout}>
+						{userToken ? '로그아웃' : '로그인'}
+					</Link>
+					{userToken ? (
+						<Link to="/mypage">마이페이지</Link>
+					) : (
+						<Link to="/login">회원가입</Link>
+					)}
 				</Linkto>
 			</Header>
 		</NavBar>
@@ -76,4 +78,9 @@ const Linkto = styled.div`
 		}
 	}
 `;
-export default Nav;
+
+const mapStateToProps = ({ user }) => ({
+	userToken: user.userToken,
+});
+
+export default connect(mapStateToProps, { clearToken })(Nav);

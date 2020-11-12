@@ -4,7 +4,7 @@ export const AdditionalInformationContainer = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
-	height: 50px;
+	height: 40px;
 	margin-top: 20px;
 	background-color: #dbdbdb;
 	border: 1px solid #000;

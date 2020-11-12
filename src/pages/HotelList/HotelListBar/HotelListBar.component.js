@@ -169,7 +169,7 @@ const SearchBar = styled.div`
 `;
 
 const Container = styled.div`
-	width: 70%;
+	width: 1140px;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
