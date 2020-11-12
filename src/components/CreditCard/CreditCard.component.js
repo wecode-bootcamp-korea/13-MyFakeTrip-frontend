@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import jQuery from 'jquery';
@@ -14,12 +14,20 @@ import {
 window.$ = window.jQuery = jQuery;
 
 const CreditCard = ({
-	finalTotalAmount,
+	airticketPrice,
+	hotelPrice,
 	departureTicket,
 	arrivalTicket,
 	passengerAmount,
 	history,
+	match,
 }) => {
+	const [purchaseFinalAmount, setPurchaseFinalAmount] = useState(0);
+	useEffect(() => {
+		const { purchase_type } = match.params;
+		if (purchase_type === 'airtickets') setPurchaseFinalAmount(airticketPrice);
+		else setPurchaseFinalAmount(hotelPrice);
+	}, []);
 	const callback = (response) => {
 		const { success } = response;
 
@@ -69,7 +77,7 @@ const CreditCard = ({
 			pg: 'uplus',
 			pay_method: 'card',
 			merchant_uid: `mid_${new Date().getTime()}`,
-			amount: finalTotalAmount,
+			amount: purchaseFinalAmount,
 			name: 'myFakeTrip Payment',
 			buyer_name: '김복자',
 			buyer_tel: '01012341234',
@@ -80,6 +88,8 @@ const CreditCard = ({
 
 		IMP.request_pay(data, callback);
 	};
+	console.log(purchaseFinalAmount);
+
 	return (
 		<CreditCardContainer>
 			<div className="title">
@@ -91,7 +101,7 @@ const CreditCard = ({
 						<span>결제금액</span>
 					</div>
 					<div className="content">
-						<span>{finalTotalAmount.toLocaleString()}원</span>
+						<span>{purchaseFinalAmount.toLocaleString()}원</span>
 					</div>
 				</div>
 				<div className="amount">
@@ -107,11 +117,12 @@ const CreditCard = ({
 	);
 };
 
-const mapStateToProps = ({ airTickets }) => ({
-	finalTotalAmount: airTickets.finalTotalAmount,
+const mapStateToProps = ({ airTickets, hotels }) => ({
+	airticketPrice: airTickets.finalTotalAmount,
 	departureTicket: airTickets.departureTicket,
 	arrivalTicket: airTickets.arrivalTicket,
 	passengerAmount: airTickets.passengerAmount,
+	hotelPrice: hotels.totalPrice,
 });
 
 export default withRouter(connect(mapStateToProps)(CreditCard));

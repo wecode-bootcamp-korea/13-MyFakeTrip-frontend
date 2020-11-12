@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PassengerWarningContainer = styled.div`
 	position: relative;
-	height: 110px;
+	height: 90px;
 	background-color: #dbdbdb;
 	border: 1px solid #000;
 	ul {
