@@ -1,19 +1,63 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import jQuery from 'jquery';
+import Swal from 'sweetalert2';
+
+import { SEND_PURCHASE_INFO } from '../../config';
 
 import {
 	CreditCardContainer,
 	CreditCardInformationContainer,
 } from './CreditCard.styles';
 
-const CreditCard = ({ finalTotalAmount }) => {
+window.$ = window.jQuery = jQuery;
+
+const CreditCard = ({
+	finalTotalAmount,
+	departureTicket,
+	arrivalTicket,
+	passengerAmount,
+	history,
+}) => {
 	const callback = (response) => {
-		const { success, error_msg } = response;
+		const { success } = response;
 
 		if (success) {
-			alert('결제 성공');
+			fetch(SEND_PURCHASE_INFO, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization:
+						'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjo0fQ.XCYT6I-inwjCTcJqD6mADybAgtuYtDV4HBdShCuZYjk',
+				},
+				body: JSON.stringify({
+					start_flight_id: departureTicket.id,
+					end_flight_id: arrivalTicket.id,
+					start_date: departureTicket.depart_date,
+					end_date: arrivalTicket.depart_date,
+					total_people: passengerAmount,
+				}),
+			})
+				.then(async () => {
+					await Swal.fire({
+						position: 'center',
+						icon: 'success',
+						title: '결제 완료하였습니다',
+						showConfirmButton: false,
+						timer: 1500,
+					});
+					history.push('/');
+				})
+				.catch((error) => console.log(error));
 		} else {
-			alert(`결제 실패: ${error_msg}`);
+			Swal.fire({
+				position: 'center',
+				icon: 'warning',
+				title: '결제 오류',
+				showConfirmButton: false,
+				timer: 1500,
+			});
 		}
 	};
 
@@ -65,6 +109,9 @@ const CreditCard = ({ finalTotalAmount }) => {
 
 const mapStateToProps = ({ airTickets }) => ({
 	finalTotalAmount: airTickets.finalTotalAmount,
+	departureTicket: airTickets.departureTicket,
+	arrivalTicket: airTickets.arrivalTicket,
+	passengerAmount: airTickets.passengerAmount,
 });
 
-export default connect(mapStateToProps)(CreditCard);
+export default withRouter(connect(mapStateToProps)(CreditCard));

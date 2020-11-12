@@ -24,7 +24,7 @@ export const SortedInformatonContainer = styled.div`
 		.tag {
 			${SetFlexCenterHeightMargin}
 			color: ${({ theme }) => theme.colors.mainBlue};
-			border: ${({ theme }) => theme.colors.mainBlue};
+			border: 1px solid ${({ theme }) => theme.colors.mainBlue};
 			font-weight: bold;
 		}
 

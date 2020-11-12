@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import {
 	changeTimeFormat,
@@ -7,7 +8,11 @@ import {
 
 import { DepartureArrival } from './DepartureArrivalContainer.styles';
 
-export const DepartureArrivalContainer = ({ ticket, departure }) => {
+export const DepartureArrivalContainer = ({
+	ticket,
+	departure,
+	passengerAmount,
+}) => {
 	const {
 		flightid,
 		airport_depart,
@@ -47,7 +52,7 @@ export const DepartureArrivalContainer = ({ ticket, departure }) => {
 				<div className="seat">
 					<span>
 						일반석
-						<br /> 1석
+						<br /> {passengerAmount}석
 					</span>
 				</div>
 				<div className="luggage">
@@ -59,4 +64,8 @@ export const DepartureArrivalContainer = ({ ticket, departure }) => {
 	);
 };
 
-export default DepartureArrivalContainer;
+const mapStateToProps = ({ airTickets }) => ({
+	passengerAmount: airTickets.passengerAmount,
+});
+
+export default connect(mapStateToProps)(DepartureArrivalContainer);

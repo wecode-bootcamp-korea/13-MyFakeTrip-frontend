@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const ContainerStyle = css`
+const ContainerStyle = styled.div`
 	padding: 10px 0;
 	border-top: 1px solid #dbdbdb;
 
@@ -64,9 +64,7 @@ const AirTicketsAsideContainer = styled.div`
 	}
 `;
 
-const AirlinesContainer = styled.div`
-	${ContainerStyle}
-
+const AirlinesContainer = styled(ContainerStyle)`
 	.information {
 		${ListContainer}
 		.selection {
@@ -88,17 +86,13 @@ const AirlinesContainer = styled.div`
 	}
 `;
 
-const ContainerElement = styled.div`
-	${ContainerStyle};
-
+const ContainerElement = styled(ContainerStyle)`
 	.information {
 		${ListContainer}
 	}
 `;
 
-const PriceRangeContainer = styled.div`
-	${ContainerStyle};
-
+const PriceRangeContainer = styled(ContainerStyle)`
 	.information {
 		position: relative;
 
