@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import MainContainer from './MainContainer/MainContainer.component';
 import SideBarMain from './SideBarMain/SideBarMain.component';
 import { API, MOCK, REVIEWAPI } from '../../config';
+// Check state
 import { getTotalPrice } from '../../redux/hotels/hotels.actions';
 
-function HotelDetails(props) {
+function HotelDetails({ history, getTotalPrice }) {
 	const [hotelDetailData, setHotelDetailData] = useState(null);
 	const [reviewData, setReviewData] = useState(null);
 	const [optionPrice, setOptionPrice] = useState([]);
@@ -59,8 +61,8 @@ function HotelDetails(props) {
 	// }, []);
 
 	const goToResult = () => {
-		getTotalPrice(totalPrice);
-		props.history.push('/purchase/hotels');
+		getTotalPrice(Number(totalPrice.replace(',', '')));
+		history.push('/purchase/hotels');
 	};
 
 	const getTotal = () => {
@@ -223,7 +225,7 @@ function HotelDetails(props) {
 	);
 }
 
-export default HotelDetails;
+export default connect(null, { getTotalPrice })(HotelDetails);
 
 const HoteldetailsContainer = styled.div`
 	width: 1060px;
