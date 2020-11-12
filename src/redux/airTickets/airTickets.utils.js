@@ -1,8 +1,6 @@
 export const orderByFastestTime = (a, b) => {
-	let aHour = a.depart_time.split(':')[0];
-	let bHour = b.depart_time.split(':')[0];
-	let aMin = a.depart_time.split(':')[1];
-	let bMin = b.depart_time.split(':')[1];
+	const [aHour, aMin] = a.depart_time.split(':');
+	const [bHour, bMin] = b.depart_time.split(':');
 	if (aHour === bHour) return aMin - bMin;
 	return aHour - bHour;
 };

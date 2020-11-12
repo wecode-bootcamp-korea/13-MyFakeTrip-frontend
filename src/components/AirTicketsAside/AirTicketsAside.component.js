@@ -28,7 +28,7 @@ const AirTicketsAside = ({
 		if (!airlineList || !airTicketsList) return;
 		const tempCheckBox = Array(airlineList.length).fill(true);
 		setAirlineListCheckBox(tempCheckBox);
-		let maxPrice = airTicketsList.reduce(
+		const maxPrice = airTicketsList.reduce(
 			(acc, { basic_price }) => Math.max(acc, basic_price),
 			0,
 		);
