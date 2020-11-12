@@ -8,7 +8,7 @@ import { API, MOCK, REVIEWAPI } from '../../config';
 // Check state
 import { getTotalPrice } from '../../redux/hotels/hotels.actions';
 
-function HotelDetails({ history, getTotalPrice }) {
+function HotelDetails({ history, getTotalPrice, match }) {
 	const [hotelDetailData, setHotelDetailData] = useState(null);
 	const [reviewData, setReviewData] = useState(null);
 	const [optionPrice, setOptionPrice] = useState([]);
@@ -29,9 +29,29 @@ function HotelDetails({ history, getTotalPrice }) {
 
 	const [averageRating, setAverageRating] = useState();
 
+	// useEffect(() => {
+	// 	// 호텔별 디테일 fetch
+	// 	fetch(MOCK)
+	// 		.then((res) => res.json())
+	// 		.then((res) => {
+	// 			setHotelDetailData(res);
+	// 			setOptionPrice(res.hotel_add_prices);
+	// 			setTotalPrice(
+	// 				new Intl.NumberFormat().format(res.hotel_detail.basic_price),
+	// 			);
+	// 			setBasicPrice(Number(res.hotel_detail.basic_price));
+	// 		});
+	// 	// 리뷰받는 fetch
+	// 	fetch(REVIEWAPI)
+	// 		.then((res) => res.json())
+	// 		.then((res) => setReviewData(res));
+	// }, []);
+
 	useEffect(() => {
-		// 호텔별 디테일 fetch
-		fetch(MOCK)
+		// 호텔 디테일 fetch
+		fetch(`${API}/${match.params.id}`, {
+			// headers: { Authorization: token },
+		})
 			.then((res) => res.json())
 			.then((res) => {
 				setHotelDetailData(res);
@@ -42,23 +62,10 @@ function HotelDetails({ history, getTotalPrice }) {
 				setBasicPrice(Number(res.hotel_detail.basic_price));
 			});
 		// 리뷰받는 fetch
-		fetch(REVIEWAPI)
+		fetch(`${REVIEWAPI}/${match.params.id}`)
 			.then((res) => res.json())
 			.then((res) => setReviewData(res));
 	}, []);
-
-	// useEffect(() => {
-	// 호텔 디테일 fetch
-	// 	fetch(`${API}/${props.match.params.id}`, {
-	// 		headers: { Authorization: token },
-	// 	})
-	// 		.then((res) => res.json())
-	// 		.then((res) => setHotelDetailData(res));
-	// 	// 리뷰받는 fetch
-	// 	fetch(`${REVIEWAPI}/${props.match.params.id}`)
-	// 		.then((res) => res.json())
-	// 		.then((res) => setReviewData(res));
-	// }, []);
 
 	const goToResult = () => {
 		getTotalPrice(Number(totalPrice.replace(',', '')));
@@ -177,7 +184,7 @@ function HotelDetails({ history, getTotalPrice }) {
 		});
 
 		setAverageRating(
-			ratingArr.reduce((acc, cur) => acc + cur, 0) / ratingArr.length,
+			parseInt(ratingArr.reduce((acc, cur) => acc + cur, 0) / ratingArr.length),
 		);
 	};
 
