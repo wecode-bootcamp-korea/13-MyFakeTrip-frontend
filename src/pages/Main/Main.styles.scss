@@ -1,0 +1,38 @@
+@import "../../style/reset.scss";
+@import "../../style/common.scss";
+
+.Main {
+  margin: 30px 125px;
+  .title {
+    h1 {
+      font-size: 33px;
+      font-weight: 700;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+  .desc {
+    display: flex;
+    .detail {
+      margin: 0 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h2 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      img {
+        object-fit: contain;
+        width: 230px;
+        height: 230px;
+      }
+      a {
+        margin-top: 20px;
+        font-weight: 600;
+      }
+    }
+  }
+}
