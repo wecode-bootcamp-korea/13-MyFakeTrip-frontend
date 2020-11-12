@@ -6,7 +6,6 @@ import HotelListMainLeft from './HotelListMain/HotelListMainLeft/HotelListMainLe
 import HotelListMainRight from './HotelListMain/HotelListMainRight/HotelListMainRight.component';
 
 import { HOTELS } from '../../config';
-import HotelLoading from './HotelListMain/WithHotelLoading/HotelLoading/HotelLoading.component';
 import WithHotelLoading from './HotelListMain/WithHotelLoading/LodingBackground.component';
 
 let theme, star, convenience;
@@ -83,8 +82,9 @@ const HotelList = () => {
 
 	const [regionArr, setRegionArr] = useState();
 
+	const [cityArr, setCityArr] = useState();
+
 	const handleRegion = (e) => {
-		console.log('e.target => ', e.target.dataset.name);
 		setRegion(e.target.dataset.name);
 	};
 
@@ -95,6 +95,7 @@ const HotelList = () => {
 	};
 
 	const handleConvenienceCheck = (e) => {
+		setLoading(true);
 		const convenienceBox = [];
 		const convenienceObj = {
 			...convenienceCheck,
@@ -117,13 +118,14 @@ const HotelList = () => {
 		)
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
 				setHotelList(result.hotels);
 				setHotelTotal(result.total_hotels);
+				setLoading(false);
 			});
 	};
 
 	const handleThemeCheck = (num) => {
+		setLoading(true);
 		setConvenienceCheck({
 			...convenienceCheck,
 			bagCheck: false,
@@ -144,14 +146,13 @@ const HotelList = () => {
 		// ${HOTELS}?region={}&date={}&mans={}&theme={}
 		theme = num;
 
-		console.log('테마', theme);
-
 		if (theme !== 0) {
 			fetch(`${HOTELS}?theme=${theme}`)
 				.then((response) => response.json())
 				.then((result) => {
 					setHotelList(result.hotels);
 					setHotelTotal(result.total_hotels);
+					setLoading(false);
 				});
 		}
 		if (theme === 0) {
@@ -160,11 +161,13 @@ const HotelList = () => {
 				.then((result) => {
 					setHotelList(result.hotels);
 					setHotelTotal(result.total_hotels);
+					setLoading(false);
 				});
 		}
 	};
 
 	const handleStarCheck = (e) => {
+		setLoading(true);
 		setfilterButton([false, false, false, false, false, false]);
 		const starBox = [];
 		const starObj = {
@@ -188,13 +191,14 @@ const HotelList = () => {
 		)
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
 				setHotelList(result.hotels);
 				setHotelTotal(result.total_hotels);
+				setLoading(true);
 			});
 	};
 
 	const handleFilterButton = (num) => {
+		setLoading(true);
 		const tempCheck = [false, false, false, false, false, false];
 		tempCheck[num] = true;
 		setfilterButton(tempCheck);
@@ -216,9 +220,9 @@ const HotelList = () => {
 			fetch(` ${HOTELS}?theme=${theme}&order_by=${filterName[num]}`)
 				.then((response) => response.json())
 				.then((result) => {
-					console.log(`result => ${result}`);
 					setHotelList(result.hotels);
 					setHotelTotal(result.total_hotels);
+					setLoading(false);
 				});
 		} else {
 			fetch(
@@ -228,16 +232,15 @@ const HotelList = () => {
 			)
 				.then((response) => response.json())
 				.then((result) => {
-					console.log(result);
 					setHotelList(result.hotels);
 					setHotelTotal(result.total_hotels);
+					setLoading(false);
 				});
 		}
 	};
 
 	const handleReverseSlider = (value) => {
 		setReverseSlider({ ...reverseSlider, reverseValue: value });
-		console.log(10 - value);
 	};
 
 	const handleDynamicSlider = (value) => {
@@ -245,12 +248,16 @@ const HotelList = () => {
 	};
 
 	const handlePagination = (e) => {
+		setLoading(true);
 		const LIMIT = 10;
 		const offSet = 10 * e.target.dataset.idx;
 
 		fetch(`${HOTELS}?limit=${LIMIT}&offset=${offSet}`)
 			.then((response) => response.json())
-			.then((result) => setHotelList(result.hotels));
+			.then((result) => {
+				setHotelList(result.hotels);
+				setLoading(false);
+			});
 	};
 
 	const cdmFetch = () => {
@@ -260,6 +267,7 @@ const HotelList = () => {
 				setHotelList(result.hotels);
 				setHotelTotal(result.total_hotels);
 				setRegionArr(result.region);
+				setCityArr(result.city);
 				setLoading(false);
 			}),
 		);
@@ -306,8 +314,6 @@ const HotelList = () => {
 		cdmFetch();
 	}, []);
 
-	console.log('loading =>', loading);
-
 	return (
 		<section>
 			<WithHotelLoading loadingState={loading} />
@@ -315,6 +321,7 @@ const HotelList = () => {
 				countData={count}
 				regionData={region}
 				regionArrData={regionArr}
+				cityArrData={cityArr}
 				onRegion={handleRegion}
 				onIncrease={handleIncreaseButton}
 				onDecrease={handleDecreaseButton}
