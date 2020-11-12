@@ -14,11 +14,12 @@ function Reviews({ review, averageRating }) {
 			<AverageCon>
 				<p>{averageRating}</p>
 				<StarsWrap>
-					<StarFull />
-					<StarFull />
-					<StarFull />
-					<StarFull />
-					<StarEmpty />
+					{Array.from({ length: averageRating }, (_, key) => (
+						<StarFull key={key} />
+					))}
+					{Array.from({ length: 10 - averageRating }, (_, key) => (
+						<StarEmpty key={key} />
+					))}
 				</StarsWrap>
 				<p className="kor">우수함</p>
 			</AverageCon>
