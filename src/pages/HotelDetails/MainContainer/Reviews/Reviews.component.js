@@ -5,15 +5,6 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 
 function Reviews({ review, averageRating }) {
 	const [reviewli, setReviewli] = useState(review.review_list);
-	console.log(reviewli);
-
-	// const averageStarRating = () => {
-	// 	const starArr = [];
-	// 	const starRating = reviewli.map((rating) => {
-	// 		starArr.push(rating.rating);
-	// 	});
-	// 	console.log(starArr);
-	// };
 
 	return (
 		<ReviewsCon>
