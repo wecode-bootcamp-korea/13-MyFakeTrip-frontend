@@ -25,7 +25,7 @@ const Login = ({ getUserToken, history }) => {
 					.then((res) => {
 						console.log(res);
 						getUserToken(res.token);
-						localStorage.setItem('Kakao_token', res.token);
+						// localStorage.setItem('Kakao_token', res.token);
 						if (res.token) {
 							alert('Successfully logged in!');
 							history.push('/');

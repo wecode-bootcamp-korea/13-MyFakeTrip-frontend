@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { HotelInformationContainer } from './HotelInformation.styles';
 
-export const HotelInformation = () => {
+export const HotelInformation = ({ hotelDetail }) => {
+	console.log(hotelDetail);
+	const { name, location, description } = hotelDetail;
 	return (
 		<HotelInformationContainer>
 			<div className="image-container">
@@ -13,12 +16,9 @@ export const HotelInformation = () => {
 			</div>
 			<div className="information-container">
 				<div className="main-information">
-					<span className="ko-name">서머셋 제주신화월드</span>
-					<span className="eng-name">(Somerset Jeju Shinhwa World)</span>
-					<span className="address">
-						제주특별자치도 서귀포시 안덕면 139 신화역사로
-						304번길,중문,제주도,대한민국 63522
-					</span>
+					<span className="ko-name">{name}</span>
+					<span className="eng-name">{description}</span>
+					<span className="address">{location}</span>
 				</div>
 				<div className="advertisement">
 					<p>
@@ -31,4 +31,8 @@ export const HotelInformation = () => {
 	);
 };
 
-export default HotelInformation;
+const mapStateToProps = ({ hotels }) => ({
+	hotelDetail: hotels.hotel.hotel_detail,
+});
+
+export default connect(mapStateToProps)(HotelInformation);

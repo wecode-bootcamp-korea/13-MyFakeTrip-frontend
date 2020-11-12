@@ -5,9 +5,12 @@ import styled from 'styled-components';
 import MainContainer from './MainContainer/MainContainer.component';
 import SideBarMain from './SideBarMain/SideBarMain.component';
 import { API, MOCK, REVIEWAPI } from '../../config';
-import { getTotalPrice } from '../../redux/hotels/hotels.actions';
+import {
+	getTotalPrice,
+	getHotelReservation,
+} from '../../redux/hotels/hotels.actions';
 
-function HotelDetails({ match, history, getTotalPrice }) {
+function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 	const [hotelDetailData, setHotelDetailData] = useState(null);
 	const [reviewData, setReviewData] = useState(null);
 	const [optionPrice, setOptionPrice] = useState([]);
@@ -66,8 +69,10 @@ function HotelDetails({ match, history, getTotalPrice }) {
 			.then((res) => setReviewData(res));
 	}, []);
 
-	const goToResult = () => {
-		getTotalPrice(Number(totalPrice.replace(',', '')));
+	const goToResult = async () => {
+		// console.log(Number(totalPrice.replace(',', '')));
+		await getTotalPrice(Number(totalPrice.replace(',', '')));
+		await getHotelReservation(hotelDetailData);
 		history.push('/purchase/hotels');
 	};
 
@@ -231,7 +236,9 @@ function HotelDetails({ match, history, getTotalPrice }) {
 	);
 }
 
-export default connect(null, { getTotalPrice })(HotelDetails);
+export default connect(null, { getTotalPrice, getHotelReservation })(
+	HotelDetails,
+);
 
 const HoteldetailsContainer = styled.div`
 	width: 1060px;
