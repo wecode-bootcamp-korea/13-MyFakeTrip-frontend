@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import MainContainer from './MainContainer/MainContainer.component';
 import SideBarMain from './SideBarMain/SideBarMain.component';
 import { API, MOCK, REVIEWAPI } from '../../config';
-// Check state
 import { getTotalPrice } from '../../redux/hotels/hotels.actions';
 
-function HotelDetails({ match, history, getTotalPrice }) {
+// Check state
+function HotelDetails({ history, getTotalPrice, match }) {
 	const [hotelDetailData, setHotelDetailData] = useState(null);
 	const [reviewData, setReviewData] = useState(null);
 	const [optionPrice, setOptionPrice] = useState([]);
@@ -53,7 +53,14 @@ function HotelDetails({ match, history, getTotalPrice }) {
 			// headers: { Authorization: token },
 		})
 			.then((res) => res.json())
-			.then((res) => setHotelDetailData(res));
+			.then((res) => {
+				setHotelDetailData(res);
+				setOptionPrice(res.hotel_add_prices);
+				setTotalPrice(
+					new Intl.NumberFormat().format(res.hotel_detail.basic_price),
+				);
+				setBasicPrice(Number(res.hotel_detail.basic_price));
+			});
 		// 리뷰받는 fetch
 		fetch(`${REVIEWAPI}/${match.params.id}`)
 			.then((res) => res.json())
@@ -177,7 +184,7 @@ function HotelDetails({ match, history, getTotalPrice }) {
 		});
 
 		setAverageRating(
-			ratingArr.reduce((acc, cur) => acc + cur, 0) / ratingArr.length,
+			parseInt(ratingArr.reduce((acc, cur) => acc + cur, 0) / ratingArr.length),
 		);
 	};
 
