@@ -7,10 +7,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { ThemeProvider } from 'styled-components';
 import THEME from './style/theme';
 import { store, persistor } from './redux/store';
-
 import './style/common.scss';
 import './style/reset.scss';
-
 ReactDOM.render(
 	<React.StrictMode>
 		<ThemeProvider theme={THEME}>
