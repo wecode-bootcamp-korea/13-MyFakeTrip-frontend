@@ -6,12 +6,9 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ThemeProvider } from 'styled-components';
 import THEME from './style/theme';
-
 import { store, persistor } from './redux/store';
-
 import './style/common.scss';
 import './style/reset.scss';
-import 'antd/dist/antd.css';
 
 ReactDOM.render(
 	<React.StrictMode>
