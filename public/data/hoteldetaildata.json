@@ -1,0 +1,63 @@
+{
+	"hotel_detail": {
+		"id": 5,
+		"name": "서울 롯데 호텔",
+		"thumbnail_url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80",
+		"description": "서울에 위치한 5성급 호텔입니다. 아름다운 뷰를 자랑합니다.",
+		"basic_price": "134018.00",
+		"checkin_time": "02:00:00",
+		"checkout_time": "14:00:00",
+		"city_id": 1,
+		"location": "서울특별시 강남구 테헤란로",
+		"star": 5
+	},
+	"hotel_images": [
+		"https://images.unsplash.com/photo-1560174326-bcebb82ad143?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+		"https://images.unsplash.com/photo-1505492537188-de71a52767cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+		"https://images.unsplash.com/photo-1510132310763-2df322eed83f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+		"https://images.unsplash.com/photo-1551918120-9739cb430c6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+	],
+	"hotel_conveniences": [
+		{
+			"id": 1,
+			"name": "수화물 보관",
+			"icon_url": "https://static.thenounproject.com/png/313858-200.png"
+		},
+		{
+			"id": 2,
+			"name": "조식",
+			"icon_url": "https://static.thenounproject.com/png/313516-200.png"
+		},
+		{
+			"id": 3,
+			"name": "피트니스",
+			"icon_url": "https://static.thenounproject.com/png/313962-200.png"
+		},
+		{
+			"id": 4,
+			"name": "24시 리셉션",
+			"icon_url": "https://static.thenounproject.com/png/313907-200.png"
+		},
+		{
+			"id": 5,
+			"name": "비즈니스시설",
+			"icon_url": "https://static.thenounproject.com/png/313682-200.png"
+		},
+		{
+			"id": 6,
+			"name": "세탁",
+			"icon_url": "https://static.thenounproject.com/png/313946-200.png"
+		},
+		{
+			"id": 7,
+			"name": "레스토랑",
+			"icon_url": "https://static.thenounproject.com/png/313517-200.png"
+		},
+		{
+			"id": 9,
+			"name": "스파",
+			"icon_url": "https://static.thenounproject.com/png/313625-200.png"
+		}
+	],
+	"hotel_add_prices": ["0.00", "0.00", "38505.00", "39558.00", "145717.00"]
+}
