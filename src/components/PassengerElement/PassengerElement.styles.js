@@ -27,6 +27,7 @@ export const PassengerContainer = styled.div`
 	.passenger-information-text {
 		font-size: 17px;
 		font-weight: bold;
+		margin-bottom: 10px;
 	}
 
 	.name {
@@ -73,6 +74,7 @@ export const PassengerContainer = styled.div`
 	.gender {
 		display: flex;
 		flex-direction: column;
+		margin-top: 10px;
 
 		span {
 			font-size: 16px;
@@ -89,6 +91,7 @@ export const PassengerContainer = styled.div`
 	.nationality {
 		display: flex;
 		flex-direction: column;
+		margin-top: 10px;
 
 		span {
 			font-size: 16px;

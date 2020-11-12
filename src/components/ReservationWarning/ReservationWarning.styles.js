@@ -4,7 +4,7 @@ export const ReservationWarningContainer = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
-	height: 130px;
+	height: 110px;
 	margin-top: 20px;
 	background-color: #dbdbdb;
 	border: 1px solid #000;
