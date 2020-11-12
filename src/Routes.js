@@ -11,6 +11,7 @@ import HotelDetails from './pages/HotelDetails/HotelDetails.component';
 import './style/common.scss';
 import HotelList from './pages/HotelList/HotelList.component';
 import './Routes.scss';
+import MyPage from './pages/MyPage/MyPage.component';
 
 function Routes() {
 	return (
@@ -25,6 +26,8 @@ function Routes() {
 					<Route exact path="/airtickets" component={AirTicketsContainer} />
 					<Route exact path="/hotellist" component={HotelList} />
 					<Route exact path="/hoteldetails/:id" component={HotelDetails} />
+					<Route exact path="/purchase" component={Purchase} />
+					<Route exact path="/mypage" component={MyPage} />
 				</Switch>
 			</div>
 			<Footer />
@@ -32,4 +35,4 @@ function Routes() {
 	);
 }
 
-export default withRouter(Routes);
+export default Routes;

@@ -548,3 +548,23 @@
 		}
 	]
 }
+    "light_list": [
+    {
+    "id": 67,
+    "airport_depart": "김포",
+    "airport_arrive": "제주",
+    "depart_date": "2020-11-20",
+    "depart_weekday": "금",
+    "flightid": "LJ301",
+    "airport_depart_eng": "GMP",
+    "airport_arrive_eng": "CJU",
+    "depart_time": "06:05:00",
+    "arrive_time": "07:15:00",
+    "airline": "진에어",
+    "airline_url": "https://static.vecteezy.com/system/resources/previews/000/620/181/large_2x/aircraft-airplane-airline-logo-label-journey-air-travel-airliner-symbol-vector-illustration.jpg",
+    "remain_seats": 9,
+    "basic_price": "18900.00",
+    "seat_class": "이코노미"
+    }
+    ]
+}

@@ -8,3 +8,6 @@ export const COME_AIRTICKET_INFO = 'http://10.58.7.116:8000/air?come=come&';
 
 export const SEND_PURCHASE_INFO = 'http://10.58.7.116:8000/air/booking';
 export const HOTELS = 'http://10.58.6.219:8000/accommodations/hotels';
+// export const COME_AIRTICKET_INFO = 'http://10.58.2.205:8000/air?come=come&';
+
+export const MYPAGE_TICKETS = 'http://10.58.7.116:8000/air/booking';
