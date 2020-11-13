@@ -10,17 +10,24 @@ const starBox = [
 	'⭐️',
 ];
 
-const CheckStarRating = ({ onStarCheck }) => {
+const CheckStarRating = ({ onStarCheck, starData }) => {
 	const handleStarCheck = (e) => {
 		onStarCheck(e);
 	};
+
+	console.log('starata =>', starData);
 
 	return (
 		<>
 			{starBox.map((item, idx) => {
 				return (
 					<CheckBox key={idx}>
-						<input type="checkbox" onClick={handleStarCheck} name="fiveStar" />
+						<input
+							type="checkbox"
+							onClick={handleStarCheck}
+							name={Object.keys(starData)[4 - idx]}
+							checked={starData[Object.keys(starData)[4 - idx]]}
+						/>
 						<span></span>
 						{item}
 					</CheckBox>

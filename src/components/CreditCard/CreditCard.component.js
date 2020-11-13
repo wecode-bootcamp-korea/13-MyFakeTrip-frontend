@@ -21,7 +21,9 @@ const CreditCard = ({
 	passengerAmount,
 	history,
 	match,
+	userToken,
 }) => {
+	console.log(userToken);
 	const [purchaseFinalAmount, setPurchaseFinalAmount] = useState(0);
 	useEffect(() => {
 		const { purchase_type } = match.params;
@@ -35,9 +37,7 @@ const CreditCard = ({
 			fetch(SEND_PURCHASE_INFO, {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
-					Authorization:
-						'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjo0fQ.XCYT6I-inwjCTcJqD6mADybAgtuYtDV4HBdShCuZYjk',
+					Authorization: userToken,
 				},
 				body: JSON.stringify({
 					start_flight_id: departureTicket.id,
@@ -117,12 +117,13 @@ const CreditCard = ({
 	);
 };
 
-const mapStateToProps = ({ airTickets, hotels }) => ({
+const mapStateToProps = ({ airTickets, hotels, user }) => ({
 	airticketPrice: airTickets.finalTotalAmount,
 	departureTicket: airTickets.departureTicket,
 	arrivalTicket: airTickets.arrivalTicket,
 	passengerAmount: airTickets.passengerAmount,
 	hotelPrice: hotels.totalPrice,
+	userToken: user.userToken,
 });
 
 export default withRouter(connect(mapStateToProps)(CreditCard));

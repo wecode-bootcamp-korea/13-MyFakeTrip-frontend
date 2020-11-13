@@ -52,6 +52,8 @@ export const LoadingContainer = styled.div`
 		.arrival {
 			display: flex;
 			flex-direction: column;
+			justify-content: center;
+
 			span {
 				color: white;
 				text-align: center;

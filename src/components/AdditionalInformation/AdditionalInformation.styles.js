@@ -11,8 +11,11 @@ export const AdditionalInformationContainer = styled.div`
 
 	ul {
 		position: absolute;
-		top: 0;
+		/* top: 0;
+		left: 30px; */
+		top: 50%;
 		left: 30px;
+		transform: translateY(-50%);
 		font-size: 12px;
 		list-style-type: circle;
 	}

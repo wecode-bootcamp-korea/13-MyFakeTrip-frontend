@@ -33,6 +33,11 @@ const TicketElement = ({
 		seat_class,
 	} = airTicket;
 
+	const changeTime = (time) => {
+		const [hour, min, sec] = time.split(':');
+		return hour + ':' + min;
+	};
+
 	const getArrivalOrDepartureTicket = async () => {
 		if (!departureTicket) {
 			await getDepartureTicket(airTicket);
@@ -56,7 +61,7 @@ const TicketElement = ({
 			</S.AirlineInformationContainer>
 			<S.TimeInformationContainer>
 				<div className="departure">
-					<span>{depart_time}</span>
+					<span>{changeTime(depart_time)}</span>
 					<span>{airport_depart_eng}</span>
 				</div>
 				<div className="time">
@@ -64,7 +69,7 @@ const TicketElement = ({
 					<span>1시간 0분</span>
 				</div>
 				<div className="arrival">
-					<span>{arrive_time}</span>
+					<span>{changeTime(arrive_time)}</span>
 					<span>{airport_arrive_eng}</span>
 				</div>
 			</S.TimeInformationContainer>

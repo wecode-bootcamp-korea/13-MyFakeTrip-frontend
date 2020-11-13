@@ -126,6 +126,14 @@ const HotelList = () => {
 
 	const handleThemeCheck = (num) => {
 		setLoading(true);
+		setStarCheck({
+			...starCheck,
+			oneStar: false,
+			twoStar: false,
+			threeStar: false,
+			fourStar: false,
+			fiveStar: false,
+		});
 		setConvenienceCheck({
 			...convenienceCheck,
 			bagCheck: false,

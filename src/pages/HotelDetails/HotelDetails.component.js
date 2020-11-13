@@ -9,8 +9,11 @@ import {
 	getTotalPrice,
 	getHotelReservation,
 } from '../../redux/hotels/hotels.actions';
+import WithHotelLoading from '../HotelList/HotelListMain/WithHotelLoading/LodingBackground.component';
 
 function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
+	const [loading, setLoading] = useState(true);
+
 	const [hotelDetailData, setHotelDetailData] = useState(null);
 	const [reviewData, setReviewData] = useState(null);
 	const [optionPrice, setOptionPrice] = useState([]);
@@ -51,6 +54,7 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 
 	useEffect(() => {
 		// 호텔 디테일 fetch
+		setLoading(true);
 		fetch(`${API}/${match.params.id}`, {
 			// headers: { Authorization: token },
 		})
@@ -66,11 +70,13 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 		// 리뷰받는 fetch
 		fetch(`${REVIEWAPI}/${match.params.id}`)
 			.then((res) => res.json())
-			.then((res) => setReviewData(res));
+			.then((res) => {
+				setReviewData(res);
+			})
+			.then(() => setLoading(false));
 	}, []);
 
 	const goToResult = async () => {
-		// console.log(Number(totalPrice.replace(',', '')));
 		await getTotalPrice(Number(totalPrice.replace(',', '')));
 		await getHotelReservation(hotelDetailData);
 		history.push('/purchase/hotels');
@@ -198,41 +204,44 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 	}, [reviewData]);
 
 	return (
-		<section className="HotelDetails">
-			<div className="hello"></div>
-			<HoteldetailsContainer>
-				{reviewData && hotelDetailData && (
-					<MainContainer
-						hotelDetailData={hotelDetailData}
-						review={reviewData}
-						countPeople={isIncreasePeopleCount}
-						countRoom={isIncreaseRoomCount}
-						getTotal={getTotal}
-						adult={adultCount}
-						child={childCount}
-						dates={dates}
-						calculateDates={calculateDates}
-						averageRating={averageRating}
-						roomCount={roomCount}
-					/>
-				)}
-				<SideBar>
-					<SideBarContainer>
-						{hotelDetailData && (
-							<SideBarMain
-								hotelDetailData={hotelDetailData.hotel_detail}
-								goToResult={goToResult}
-								basicPrice={basicPrice}
-								totalPrice={totalPrice}
-							/>
-						)}
-						<Link to="/">
-							<AdImage />
-						</Link>
-					</SideBarContainer>
-				</SideBar>
-			</HoteldetailsContainer>
-		</section>
+		<>
+			<WithHotelLoading loadingState={loading} />
+			<section className="HotelDetails">
+				<div className="hello"></div>
+				<HoteldetailsContainer>
+					{reviewData && hotelDetailData && (
+						<MainContainer
+							hotelDetailData={hotelDetailData}
+							review={reviewData}
+							countPeople={isIncreasePeopleCount}
+							countRoom={isIncreaseRoomCount}
+							getTotal={getTotal}
+							adult={adultCount}
+							child={childCount}
+							dates={dates}
+							calculateDates={calculateDates}
+							averageRating={averageRating}
+							roomCount={roomCount}
+						/>
+					)}
+					<SideBar>
+						<SideBarContainer>
+							{hotelDetailData && (
+								<SideBarMain
+									hotelDetailData={hotelDetailData.hotel_detail}
+									goToResult={goToResult}
+									basicPrice={basicPrice}
+									totalPrice={totalPrice}
+								/>
+							)}
+							<Link to="/">
+								<AdImage />
+							</Link>
+						</SideBarContainer>
+					</SideBar>
+				</HoteldetailsContainer>
+			</section>
+		</>
 	);
 }
 

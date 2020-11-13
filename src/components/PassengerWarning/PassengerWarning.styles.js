@@ -7,8 +7,9 @@ export const PassengerWarningContainer = styled.div`
 	border: 1px solid #000;
 	ul {
 		position: absolute;
-		top: 0;
+		top: 50%;
 		left: 30px;
+		transform: translateY(-50%);
 		font-size: 12px;
 		list-style-type: circle;
 
