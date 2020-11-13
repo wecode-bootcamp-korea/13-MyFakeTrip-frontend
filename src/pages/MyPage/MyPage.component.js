@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import styled, { css } from 'styled-components';
 import AirPlaneTicket from './AirPlaneTicket/AirPlaneTicket.component';
 
 import { MYPAGE_TICKETS } from '../../config';
 
-const MyPage = (props) => {
+const MyPage = ({ userToken }) => {
 	const [onOffCheck, setOnOff] = useState([true, false, false, false]);
 
 	const [startFlight, setStartFlight] = useState([]);
@@ -21,8 +22,7 @@ const MyPage = (props) => {
 		fetch(MYPAGE_TICKETS, {
 			method: 'GET',
 			headers: {
-				Authorization:
-					'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjo0fQ.XCYT6I-inwjCTcJqD6mADybAgtuYtDV4HBdShCuZYjk',
+				Authorization: userToken,
 			},
 		})
 			.then((response) => response.json())
@@ -99,7 +99,11 @@ const MyPage = (props) => {
 	);
 };
 
-export default MyPage;
+const mapStateToProps = ({ user }) => ({
+	userToken: user.userToken,
+});
+
+export default connect(mapStateToProps)(MyPage);
 
 const Section = styled.section`
 	background-color: #f5f6f7;

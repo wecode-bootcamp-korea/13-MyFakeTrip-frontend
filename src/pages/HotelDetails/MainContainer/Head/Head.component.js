@@ -61,6 +61,7 @@ const StarStyle = css`
 `;
 
 const HeadCon = styled.header`
+	margin-top: 40px;
 	margin-bottom: 40px;
 	display: flex;
 	justify-content: space-between;

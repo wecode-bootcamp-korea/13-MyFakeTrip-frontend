@@ -48,28 +48,34 @@ const Header = styled.div`
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 15px;
+	position: relative;
 	img {
-		width: 150px;
-		margin-right: 30px;
+		width: 200px;
+		margin: 20px 30px 0 0;
 	}
 	input {
-		width: 340px;
-		height: 45px;
+		position: absolute;
+		top: 23px;
+		width: 400px;
+		height: 60px;
 		border-radius: 4px;
 		border: none;
-		padding-left: 20px;
+		padding-left: 25px;
 		color: #495056;
 		background-color: #f5f6f7;
+		::placeholder {
+			font-size: 18px;
+		}
 		:focus {
 			outline: none;
 		}
 	}
 `;
 const Linkto = styled.div`
-	margin-top: 15px;
+	margin-top: 35px;
 	a {
 		color: rgba(73, 80, 86, 0.7);
-		font-size: 15px;
+		font-size: 20px;
 		padding: 7px 25px;
 		&:last-child {
 			border: 2px solid #a7d4f9;

@@ -59,7 +59,7 @@ function Select() {
 const Wrapper = styled.div`
 	height: 350px;
 	h1 {
-		font-size: 30px;
+		font-size: 40px;
 		text-align: center;
 		font-weight: 600;
 	}
@@ -67,7 +67,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
 	border-radius: 10px;
 	box-shadow: 5px 10px 5px 5px rgba(0, 0, 0, 0.1);
-	margin: 40px;
+	margin: 70px 40px 40px 40px;
 `;
 const City = styled.div`
 	.jeju {
@@ -79,11 +79,11 @@ const City = styled.div`
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
 		width: 25%;
-		padding-top: 10px;
-		height: 50px;
+		padding-top: 20px;
+		height: 60px;
 		background-color: rgba(0, 0, 0, 0.05);
 		color: #666d75;
-		font-size: 18px;
+		font-size: 24px;
 		text-align: center;
 		font-weight: 700;
 	}
@@ -107,17 +107,18 @@ const Icons = styled.div`
 			background-color: #fa5b4a;
 			border-radius: 7px;
 			padding: 2px;
-			font-size: 8px;
+			font-size: 15px;
 			color: #ffffff;
 		}
 		img {
-			width: 60px;
-			margin: 20px;
+			width: 70px;
+			margin: 30px;
 		}
 		p {
 			color: #495056;
-			font-size: 14px;
+			font-size: 19px;
 			font-weight: 400;
+			margin-bottom: 40px;
 		}
 	}
 `;

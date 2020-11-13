@@ -11,7 +11,8 @@ export const ReservationWarningContainer = styled.div`
 
 	ul {
 		position: absolute;
-		top: 0;
+		top: 50%;
+		transform: translateY(-50%);
 		left: 30px;
 		font-size: 12px;
 		list-style-type: circle;
