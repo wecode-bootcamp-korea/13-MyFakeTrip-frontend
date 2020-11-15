@@ -26,7 +26,7 @@
 - JavaScript
 - Styled Component
 - HTML, SASS
-- Redux
+- Redux (React-Redux, Redux-Persist)
 - CRA, npm
 - Git
 - ESLint, Prettier
@@ -82,14 +82,16 @@
 
 - Role : Team Member
 - Position : Front-end
-- Stack : React
-- Work : 항공권 목록 페이지, 구매 페이지, 로그인 페이지 구현
+- Stack : React, Redux(React Reudx, Redux Persist), React Router DOM, Styled Component 
+- Work : 항공권 목록 페이지, 구매 페이지 구현
 
 1. React Router Dom을 활용한 동적 라우팅 구현
 2. 항공권 페이지 : 서버에서 Fetch 받은 데이터를 Redux를 이용 Display 변경 및 날짜와 인원에 따른 조건 Filtering, 오는편 가는편 구현
 3. 구매페이지 : 항공권 및 호텔 구매 예정 상품을 Redux를 이용해 구매 구현
 4. 로그인 페이지 : UserToken을 Redux를 활용해 저장
-5. Git - Git을 통하여 프로젝트 관리 및 Conflict 해결 및 rebase 이용
+5. 호텔 상세페이지: 구매페이지 가기 전 호텔 정보 및 가격 Redux에 저장 후 구매페이지로 전달
+6. SASS Styled Component로 변환
+6. Git - Git을 통하여 프로젝트 관리 및 Conflict 해결 및 rebase 이용
 
 ---
 
