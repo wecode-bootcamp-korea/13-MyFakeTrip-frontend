@@ -27,6 +27,7 @@
 - Styled Component
 - HTML, SASS
 - Redux (React-Redux, Redux-Persist)
+- Sweet Alert2
 - CRA, npm
 - Git
 - ESLint, Prettier
@@ -82,7 +83,7 @@
 
 - Role : Team Member
 - Position : Front-end
-- Stack : React, Redux(React Reudx, Redux Persist), React Router DOM, Styled Component 
+- Stack : React, Redux(React-Redux, Redux-Persist), React Router DOM, Styled Component 
 - Work : 항공권 목록 페이지, 구매 페이지 구현
 
 1. React Router Dom을 활용한 동적 라우팅 구현
