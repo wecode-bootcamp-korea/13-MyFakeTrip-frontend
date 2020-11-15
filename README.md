@@ -1,4 +1,4 @@
-![myfaketriplogo]()
+<img src="https://media.vlpt.us/images/deokyeong1020/post/164469d3-032a-48c1-92ff-9daf0f6ce161/image.png" alt="팀 로고"/>
 
 - 팀명 : myFakeTrip
 - 팀원 : 허덕형(Product Manager), 서수연, 김제형 , 김지안, 성규원, 황채영
@@ -45,7 +45,7 @@
 ## 영상 및 화면
 
 - 메인 화면 
-<img src="https://media.vlpt.us/images/deokyeong1020/post/e1529700-49d3-454e-8a94-81de6935424d/%E1%84%91%E1%85%AE%E1%86%AF%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA.png" alt="메인사진" />
+<img src="https://media.vlpt.us/images/deokyeong1020/post/a6bd83db-4db2-4b38-81d1-1604ad0262a4/localhost_3000_%20(1).png" alt="메인사진" />
 
 - 유튜브:
 
