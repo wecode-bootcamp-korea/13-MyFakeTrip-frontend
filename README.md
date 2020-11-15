@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+![myfaketriplogo]()
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 팀명 : myFakeTrip
+- 팀원 : 허덕형(Product Manager), 서수연, 김제형 , 김지안, 성규원, 황채영
+- 기간 : 2020년 11월 2일 ~ 2020년 11월 13일
+- backend github :https://github.com/wecode-bootcamp-korea/13-MyFakeTrip-backend
 
-## Available Scripts
+## 프로젝트 소개
 
-In the project directory, you can run:
+항공권 및 여행 상품 예약 사이트인 myRealTrip의 항공권 예약 및 호텔 예약 기능 구현
 
-### `npm start`
+### 주요기능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-
+-
+-
+-
+-
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 기술스택
 
-### `npm test`
+### front-end
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- React-router-dom
+- JavaScript
+- Styled Component
+- HTML, SASS
+- Redux
+- CRA, npm
+- Git
+- ESLint, Prettier
+- slack, trello
 
-### `npm run build`
+### back-end
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 추가설치 라이브러리
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-
 
-### `npm run eject`
+## 영상 및 화면
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 메인 화면
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 유튜브:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 멤버소개
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. 허덕형
 
-## Learn More
+- Role : Team Leader(Product Manager)
+- Position : Front-end
+- Stack : React
+- Work :
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1.
+2.
+3.
+4.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+2. 서수연
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Role : Team Member, README 작성
+- Position : Front-end
+- Stack : React
+- Work : 호텔 상세페이지(hotel detail) 구현
 
-### Analyzing the Bundle Size
+1. Styled Component 사용을 통한 스타일링 구현
+2. URL parameters를 이용한 동적 라우팅 구현
+3. Lifting State Up을 이용한 날짜, 옵션에 따른 총합 계산 구현
+4. react-daterangepick, slick-slider 등 라이브러리 사용 및 수정
+5. git rebase를 이용한 git flow 적용
+6. data 변화에 따른 UI 변경 기능 구현
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+3. 김제형
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Role : Team Member
+- Position : Front-end
+- Stack : React
+- Work : 항공권 목록 페이지, 구매 페이지, 로그인 페이지 구현
 
-### Advanced Configuration
+1. React Router Dom을 활용한 동적 라우팅 구현
+2. 항공권 페이지 : 서버에서 Fetch 받은 데이터를 Redux를 이용 Display 변경 및 날짜와 인원에 따른 조건 Filtering, 오는편 가는편 구현
+3. 구매페이지 : 항공권 및 호텔 구매 예정 상품을 Redux를 이용해 구매 구현
+4. 로그인 페이지 : UserToken을 Redux를 활용해 저장
+5. Git - Git을 통하여 프로젝트 관리 및 Conflict 해결 및 rebase 이용
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+4. 김지안
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+5. 성규원
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+6. 황채영
+
+---
+
+## Thanks ❤Wecode 멘토님들❤
