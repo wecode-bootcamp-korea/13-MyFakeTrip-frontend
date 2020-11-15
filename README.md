@@ -28,6 +28,7 @@
 - HTML, SASS
 - Redux (React-Redux, Redux-Persist)
 - Sweet Alert2
+- React-Bootstrap-DatePicker
 - CRA, npm
 - Git
 - ESLint, Prettier
