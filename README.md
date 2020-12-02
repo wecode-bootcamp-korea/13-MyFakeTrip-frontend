@@ -58,12 +58,12 @@
 - Role : Team Leader(Product Manager)
 - Position : Front-end
 - Stack : React
-- Work :
+- Work : 호텔 리스트 페이지 구현, 항공권 예약 확인 페이지 구현
 
-1.
-2.
-3.
-4.
+1. Styled Component 사용을 통한 스타일링 구현
+2. URL parameters(queryString)를 이용한 동적 라우팅 구현
+3. REST API 통신을 이용해 항공권 예약 내역, 호텔리스트 통신
+
 
 ---
 
