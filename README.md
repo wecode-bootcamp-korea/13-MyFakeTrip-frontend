@@ -1,3 +1,4 @@
+![myrealtrip resize](https://user-images.githubusercontent.com/66218824/102046483-c7fb2c80-3e1e-11eb-87db-ef462adbde92.jpg)
 
 - 팀명 : myFakeTrip
 - 팀원 : 허덕형(Product Manager), 서수연, 김제형 , 김지안, 성규원, 황채영
