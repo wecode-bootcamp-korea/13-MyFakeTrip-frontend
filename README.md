@@ -27,7 +27,7 @@
 - JavaScript
 - Styled Component
 - HTML, SASS
-- Redux ()
+- Redux (김제형)
 - CRA, npm
 - Git
 - ESLint, Prettier
