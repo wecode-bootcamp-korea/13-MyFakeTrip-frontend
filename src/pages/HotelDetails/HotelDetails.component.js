@@ -24,9 +24,17 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 	const [adultCount, setAdultCount] = useState(0);
 	const [childCount, setChildCount] = useState(0);
 
+	// const [roomCount, setRoomCount] = useState({
+	// 	standard: { double: 0, twin: 0 },
+	// 	delux: { double: 0, twin: 0 },
+	// 	suite: 0,
+	// });
+
 	const [roomCount, setRoomCount] = useState({
-		standard: { double: 0, twin: 0 },
-		delux: { double: 0, twin: 0 },
+		standardDouble: 0,
+		standardTwin: 0,
+		deluxDouble: 0,
+		deluxTwin: 0,
 		suite: 0,
 	});
 
@@ -88,8 +96,8 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 		const suitePrice = +optionPrice[4];
 		const totalPrice =
 			basicPrice * dates +
-			deluxDoublePrice * roomCount.delux.double +
-			deluxTwinPrice * roomCount.delux.twin +
+			deluxDoublePrice * roomCount.deluxDouble +
+			deluxTwinPrice * roomCount.deluxTwin +
 			suitePrice * roomCount.suite;
 		const formatter = new Intl.NumberFormat().format(totalPrice);
 		setTotalPrice(formatter);
@@ -107,62 +115,10 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 	const isIncreaseRoomCount = (increase, targetRoomCount, type) => {
 		if (!increase && targetRoomCount === 0) return;
 
-		if (type === 'standardDouble') {
+		if (type) {
 			increase
-				? setRoomCount({
-						...roomCount,
-						standard: {
-							...roomCount.standard,
-							double: roomCount.standard.double + 1,
-						},
-				  })
-				: setRoomCount({
-						...roomCount,
-						standard: {
-							...roomCount.standard,
-							double: roomCount.standard.double - 1,
-						},
-				  });
-		} else if (type === 'standardTwin') {
-			increase
-				? setRoomCount({
-						...roomCount,
-						standard: {
-							...roomCount.standard,
-							twin: roomCount.standard.twin + 1,
-						},
-				  })
-				: setRoomCount({
-						...roomCount,
-						standard: {
-							...roomCount.standard,
-							twin: roomCount.standard.twin - 1,
-						},
-				  });
-		} else if (type === 'deluxDouble') {
-			increase
-				? setRoomCount({
-						...roomCount,
-						delux: { ...roomCount.delux, double: roomCount.delux.double + 1 },
-				  })
-				: setRoomCount({
-						...roomCount,
-						delux: { ...roomCount.delux, double: roomCount.delux.double - 1 },
-				  });
-		} else if (type === 'deluxTwin') {
-			increase
-				? setRoomCount({
-						...roomCount,
-						delux: { ...roomCount.delux, twin: roomCount.delux.twin + 1 },
-				  })
-				: setRoomCount({
-						...roomCount,
-						delux: { ...roomCount.delux, twin: roomCount.delux.twin - 1 },
-				  });
-		} else {
-			increase
-				? setRoomCount({ ...roomCount, suite: roomCount.suite + 1 })
-				: setRoomCount({ ...roomCount, suite: roomCount.suite - 1 });
+				? setRoomCount({ ...roomCount, [type]: roomCount[type] + 1 })
+				: setRoomCount({ ...roomCount, [type]: roomCount[type] - 1 });
 		}
 	};
 
