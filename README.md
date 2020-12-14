@@ -11,11 +11,11 @@
 
 ### 주요기능
 
--
--
--
--
--
+- 카카오 소셜 로그인을 이용한 로그인 구현
+- 항공권 목록, 선택, 구매로로 이어지는 flow 구현
+- 호텔 목록, 호텔 상세페이지, 구매로 이어지는 flow 구현
+- 항공권 및 호텔 목록에서 조건에 따른 filtering 구현
+- Redux를 이용한 JWT 관리
 
 ## 기술스택
 
@@ -26,7 +26,7 @@
 - JavaScript
 - Styled Component
 - HTML, SASS
-- Redux
+- Redux ()
 - CRA, npm
 - Git
 - ESLint, Prettier
@@ -40,6 +40,9 @@
 - MySQL
 - bycrypt, PyJWT, cors-headers
 - Slack, Trello
+- Aquery Tool
+- Postman
+- Git & Github
 
 ### 추가설치 라이브러리
 
@@ -103,6 +106,17 @@
 ---
 
 5. 성규원
+
+- Role : Team Member
+- Position : Back-end
+- Stack : Django
+- Work : 항공권
+
+1. 항공권 리스트 페이지 : 필터링된 항공권 리스트 페이지 구현 및 정렬, 필터 기능 구현
+2. 항공권 예약 페이지 : 선택한 항공권 예약 기능 구현
+3. 마이페이지 : 예약한 항공권 정보에 접근 가능하도록 구현
+4. unit test : 테스트코드 작성
+5. Git - Git을 통하여 프로젝트 관리 및 Conflict 해결 및 rebase 이용
 
 ---
 
