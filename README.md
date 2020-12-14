@@ -100,6 +100,13 @@
 ---
 
 4. 김지안
+- Role : Team Member
+- Position : Front-end
+- Stack : React
+- Work : 메인 페이지 구현, 로그인 페이지 구현
+1. Styled Component 사용을 통한 메인 페이지 스타일링 구현
+2. 로그인 페이지: 소셜 로그인
+3. Git - Git을 통하여 프로젝트 관리 및 Conflict 해결 및 rebase 이용
 
 ---
 
