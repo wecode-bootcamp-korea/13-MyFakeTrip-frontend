@@ -44,13 +44,10 @@
 - Postman
 - Git & Github
 
-### 추가설치 라이브러리
-
--
-
 ## 영상 및 화면
 
 - 메인 화면
+![myfaketrip main capture resize](https://user-images.githubusercontent.com/66218824/102047659-fda11500-3e20-11eb-914b-99d2a2e9aee8.jpg)
 
 - 유튜브: https://youtu.be/G8wdZMn2BhU
 
