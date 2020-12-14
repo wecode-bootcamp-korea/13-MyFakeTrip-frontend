@@ -49,7 +49,7 @@
 
 - 메인 화면
 
-- 유튜브:
+- 유튜브: https://youtu.be/G8wdZMn2BhU
 
 ## 멤버소개
 
