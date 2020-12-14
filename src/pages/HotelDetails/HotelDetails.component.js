@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import MainContainer from './MainContainer/MainContainer.component';
 import SideBarMain from './SideBarMain/SideBarMain.component';
-import { API, MOCK, REVIEWAPI } from '../../config';
+import { MOCK, REVIEWAPI } from '../../config';
 import {
 	getTotalPrice,
 	getHotelReservation,
 } from '../../redux/hotels/hotels.actions';
-import WithHotelLoading from '../HotelList/HotelListMain/WithHotelLoading/LodingBackground.component';
+// import WithHotelLoading from '../HotelList/HotelListMain/WithHotelLoading/LodingBackground.component';
 
 function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
-	const [loading, setLoading] = useState(true);
+	const [loading] = useState(true);
 
 	const [hotelDetailData, setHotelDetailData] = useState(null);
 	const [reviewData, setReviewData] = useState(null);
@@ -34,30 +34,9 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 
 	const [averageRating, setAverageRating] = useState();
 
-	// useEffect(() => {
-	// 	// 호텔별 디테일 fetch
-	// 	fetch(MOCK)
-	// 		.then((res) => res.json())
-	// 		.then((res) => {
-	// 			setHotelDetailData(res);
-	// 			setOptionPrice(res.hotel_add_prices);
-	// 			setTotalPrice(
-	// 				new Intl.NumberFormat().format(res.hotel_detail.basic_price),
-	// 			);
-	// 			setBasicPrice(Number(res.hotel_detail.basic_price));
-	// 		});
-	// 	// 리뷰받는 fetch
-	// 	fetch(REVIEWAPI)
-	// 		.then((res) => res.json())
-	// 		.then((res) => setReviewData(res));
-	// }, []);
-
 	useEffect(() => {
-		// 호텔 디테일 fetch
-		setLoading(true);
-		fetch(`${API}/${match.params.id}`, {
-			// headers: { Authorization: token },
-		})
+		// 호텔별 디테일 fetch
+		fetch(MOCK)
 			.then((res) => res.json())
 			.then((res) => {
 				setHotelDetailData(res);
@@ -68,13 +47,34 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 				setBasicPrice(Number(res.hotel_detail.basic_price));
 			});
 		// 리뷰받는 fetch
-		fetch(`${REVIEWAPI}/${match.params.id}`)
+		fetch(REVIEWAPI)
 			.then((res) => res.json())
-			.then((res) => {
-				setReviewData(res);
-			})
-			.then(() => setLoading(false));
+			.then((res) => setReviewData(res));
 	}, []);
+
+	// useEffect(() => {
+	// 	// 호텔 디테일 fetch
+	// 	setLoading(true);
+	// 	fetch(`${API}/${match.params.id}`, {
+	// 		// headers: { Authorization: token },
+	// 	})
+	// 		.then((res) => res.json())
+	// 		.then((res) => {
+	// 			setHotelDetailData(res);
+	// 			setOptionPrice(res.hotel_add_prices);
+	// 			setTotalPrice(
+	// 				new Intl.NumberFormat().format(res.hotel_detail.basic_price),
+	// 			);
+	// 			setBasicPrice(Number(res.hotel_detail.basic_price));
+	// 		});
+	// 	// 리뷰받는 fetch
+	// 	fetch(`${REVIEWAPI}/${match.params.id}`)
+	// 		.then((res) => res.json())
+	// 		.then((res) => {
+	// 			setReviewData(res);
+	// 		})
+	// 		.then(() => setLoading(false));
+	// }, []);
 
 	const goToResult = async () => {
 		await getTotalPrice(Number(totalPrice.replace(',', '')));
@@ -205,7 +205,7 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 
 	return (
 		<>
-			<WithHotelLoading loadingState={loading} />
+			{/* <WithHotelLoading loadingState={loading} /> */}
 			<section className="HotelDetails">
 				<div className="hello"></div>
 				<HoteldetailsContainer>
