@@ -88,8 +88,8 @@
 
 - Role : Team Member
 - Position : Front-end
-- Stack : React
-- Work : 항공권 목록 페이지, 구매 페이지, 로그인 페이지 구현
+- Stack : React, Redux(React Redux, Redux-Persist), Styled Component
+- Work : 항공권 목록 페이지, 구매 페이지, 로그인 페이지 토큰 관리
 
 1. React Router Dom을 활용한 동적 라우팅 구현
 2. 항공권 페이지 : 서버에서 Fetch 받은 데이터를 Redux를 이용 Display 변경 및 날짜와 인원에 따른 조건 Filtering, 오는편 가는편 구현
