@@ -1,4 +1,3 @@
-![myfaketrip main capture](https://user-images.githubusercontent.com/66218824/102047992-9e8fd000-3e21-11eb-9dd2-f0db8a3ebefe.png)
 
 - 팀명 : myFakeTrip
 - 팀원 : 허덕형(Product Manager), 서수연, 김제형 , 김지안, 성규원, 황채영
@@ -47,7 +46,7 @@
 ## 영상 및 화면
 
 - 메인 화면
-![myfaketrip main capture resize](https://user-images.githubusercontent.com/66218824/102047659-fda11500-3e20-11eb-914b-99d2a2e9aee8.jpg)
+![myfaketrip main capture](https://user-images.githubusercontent.com/66218824/102047992-9e8fd000-3e21-11eb-9dd2-f0db8a3ebefe.png)
 
 - 유튜브: https://youtu.be/G8wdZMn2BhU
 
