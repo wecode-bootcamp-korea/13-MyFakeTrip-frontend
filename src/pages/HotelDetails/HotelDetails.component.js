@@ -24,12 +24,6 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 	const [adultCount, setAdultCount] = useState(0);
 	const [childCount, setChildCount] = useState(0);
 
-	// const [roomCount, setRoomCount] = useState({
-	// 	standard: { double: 0, twin: 0 },
-	// 	delux: { double: 0, twin: 0 },
-	// 	suite: 0,
-	// });
-
 	const [roomCount, setRoomCount] = useState({
 		standardDouble: 0,
 		standardTwin: 0,
