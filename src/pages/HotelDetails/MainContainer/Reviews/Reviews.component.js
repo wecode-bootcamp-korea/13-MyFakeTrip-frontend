@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Review from './Review/Review.component';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
 function Reviews({ review, averageRating }) {
 	const [reviewli, setReviewli] = useState(review.review_list);
+	const [averageStar, setAverageStar] = useState([]);
 
-	console.log(Array.from({ length: averageRating }));
-	// console.log(
-	// 	Array.from({ length: averageRating / 2 }, (_, key) => (
-	// 		<StarFull key={key} />
-	// 	)),
-	// );
+	const showAverageStar = () => {
+		const averageStarArr = [];
+		for (let i = 0; i < Math.round(averageRating / 2); i++) {
+			averageStarArr.push(<StarFull key={i} />);
+		}
+		for (let i = 0; i < 5 - Math.round(averageRating / 2); i++) {
+			averageStarArr.push(<StarEmpty key={i + 10} />);
+		}
+	};
+
+	useEffect(() => {
+		showAverageStar();
+	}, []);
 
 	return (
 		<ReviewsCon>
@@ -20,14 +28,7 @@ function Reviews({ review, averageRating }) {
 			</h2>
 			<AverageCon>
 				<p>{averageRating}</p>
-				<StarsWrap>
-					{/* {Array.from({ length: averageRating / 2 }, (_, key) => (
-						<StarFull key={key} />
-					))}
-					{Array.from({ length: 5 - averageRating / 2 }, (_, key) => (
-						<StarEmpty key={key} />
-					))} */}
-				</StarsWrap>
+				<StarsWrap>{averageStar}</StarsWrap>
 				<p className="kor">우수함</p>
 			</AverageCon>
 			<ReviewsWrap>

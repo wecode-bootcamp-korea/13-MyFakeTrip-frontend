@@ -8,6 +8,7 @@ function Head({ hotelDetailData, averageRating }) {
 	const [hotelDetails, setHotelDetails] = useState({});
 	const [starArr, setStar] = useState([]);
 
+	// state는 불변값? 을 가지고 있어야 하는데 starArr에 직접 push 해도되나????
 	const handleStar = () => {
 		for (let i = 0; i < star; i++) {
 			starArr.push(<StarFull key={i} />);
@@ -15,7 +16,7 @@ function Head({ hotelDetailData, averageRating }) {
 		for (let i = 0; i < 5 - star; i++) {
 			starArr.push(<StarEmpty key={i} />);
 		}
-		setStar([...starArr]);
+		setStar([...starArr]); // 직접 starArr에 push 했는데 setStar가 의미 있나?
 	};
 
 	useEffect(() => {

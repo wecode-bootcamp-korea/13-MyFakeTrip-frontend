@@ -33,7 +33,6 @@ function HotelDetails({ match, history, getTotalPrice, getHotelReservation }) {
 	});
 
 	const [dates, setDates] = useState('');
-
 	const [averageRating, setAverageRating] = useState();
 
 	useEffect(() => {
