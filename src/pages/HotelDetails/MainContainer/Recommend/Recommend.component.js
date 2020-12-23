@@ -8,14 +8,13 @@ import 'slick-carousel/slick/slick-theme.css';
 const CARDIMG = 'http://localhost:3000/data/hoteldata.json';
 
 function Recommend(props) {
+	const [cardImg, setCardImg] = useState('');
 	const settings = {
 		infinite: false,
 		speed: 500,
 		slidesToShow: 3,
 		slidesToScroll: 3,
 	};
-
-	const [cardImg, setCardImg] = useState('');
 
 	useEffect(() => {
 		fetch(CARDIMG)

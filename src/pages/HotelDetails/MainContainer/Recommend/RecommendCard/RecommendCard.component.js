@@ -38,13 +38,11 @@ function RecommendCard({ card }) {
 								{new Intl.NumberFormat().format(card.price)}
 								<span>원</span>
 							</span>
-
 							<span className="nights"> / 1박</span>
 						</PriceWrap>
 					</div>
 				</ContentWrap>
 			</ShadowBox>
-
 			<WishWrap>
 				<i className="far fa-heart" onClick={toggleHeartColor} />
 			</WishWrap>

@@ -6,6 +6,13 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 function Reviews({ review, averageRating }) {
 	const [reviewli, setReviewli] = useState(review.review_list);
 
+	console.log(Array.from({ length: averageRating }));
+	// console.log(
+	// 	Array.from({ length: averageRating / 2 }, (_, key) => (
+	// 		<StarFull key={key} />
+	// 	)),
+	// );
+
 	return (
 		<ReviewsCon>
 			<h2>
@@ -14,12 +21,12 @@ function Reviews({ review, averageRating }) {
 			<AverageCon>
 				<p>{averageRating}</p>
 				<StarsWrap>
-					{Array.from({ length: averageRating }, (_, key) => (
+					{/* {Array.from({ length: averageRating / 2 }, (_, key) => (
 						<StarFull key={key} />
 					))}
-					{Array.from({ length: 10 - averageRating }, (_, key) => (
+					{Array.from({ length: 5 - averageRating / 2 }, (_, key) => (
 						<StarEmpty key={key} />
-					))}
+					))} */}
 				</StarsWrap>
 				<p className="kor">우수함</p>
 			</AverageCon>
