@@ -80,7 +80,6 @@
 3. Lifting State Up을 이용한 날짜, 옵션에 따른 총합 계산 구현
 4. react-daterangepick, slick-slider 등 라이브러리 사용 및 수정
 5. git rebase를 이용한 git flow 적용
-6. data 변화에 따른 UI 변경 기능 구현
 
 ---
 
