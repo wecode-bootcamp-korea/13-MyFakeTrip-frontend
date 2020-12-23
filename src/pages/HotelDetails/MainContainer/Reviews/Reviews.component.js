@@ -4,8 +4,7 @@ import Review from './Review/Review.component';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
 function Reviews({ review, averageRating }) {
-	const [reviewli, setReviewli] = useState(review.review_list);
-	// const [averageStar, setAverageStar] = useState([]);
+	const [reviewli] = useState(review.review_list);
 
 	// const showAverageStar = () => {
 	// 	const averageStarArr = [];
@@ -21,6 +20,8 @@ function Reviews({ review, averageRating }) {
 	// 	showAverageStar();
 	// }, []);
 
+	// console.log(averageRating && Array(Math.round(averageRating / 2)));
+
 	return (
 		<ReviewsCon>
 			<h2>
@@ -29,12 +30,19 @@ function Reviews({ review, averageRating }) {
 			<AverageCon>
 				<p>{averageRating}</p>
 				<StarsWrap>
-					{/* {[
-						...Array(Math.round(averageRating / 2)).map((_, i) => {
-							<StarFull />;
-						}),
-					]} */}
-					{Array.from({ length: Math.round(averageRating / 2) }, (_, key) => (
+					{/* {averageRating &&
+						Array(Math.round(averageRating / 2))
+							.fill(1)
+							.map((_, i) => {
+								<StarFull key={i} />;
+							})} */}
+					{[...Array(Math.round(averageRating / 2))].map((_, i) => (
+						<StarFull key={i} />
+					))}
+					{[...Array(5 - Math.round(averageRating / 2))].map((_, i) => (
+						<StarEmpty key={i} />
+					))}
+					{/* {Array.from({ length: Math.round(averageRating / 2) }, (_, key) => (
 						<StarFull key={key} />
 					))}
 					{Array.from(
@@ -42,7 +50,7 @@ function Reviews({ review, averageRating }) {
 						(_, key) => (
 							<StarEmpty key={key} />
 						),
-					)}
+					)} */}
 				</StarsWrap>
 				<p className="kor">우수함</p>
 			</AverageCon>
