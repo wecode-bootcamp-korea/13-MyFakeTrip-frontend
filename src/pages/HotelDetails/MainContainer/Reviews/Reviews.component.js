@@ -5,21 +5,21 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 
 function Reviews({ review, averageRating }) {
 	const [reviewli, setReviewli] = useState(review.review_list);
-	const [averageStar, setAverageStar] = useState([]);
+	// const [averageStar, setAverageStar] = useState([]);
 
-	const showAverageStar = () => {
-		const averageStarArr = [];
-		for (let i = 0; i < Math.round(averageRating / 2); i++) {
-			averageStarArr.push(<StarFull key={i} />);
-		}
-		for (let i = 0; i < 5 - Math.round(averageRating / 2); i++) {
-			averageStarArr.push(<StarEmpty key={i + 10} />);
-		}
-	};
+	// const showAverageStar = () => {
+	// 	const averageStarArr = [];
+	// 	for (let i = 0; i < Math.round(averageRating / 2); i++) {
+	// 		averageStarArr.push(<StarFull key={i} />);
+	// 	}
+	// 	for (let i = 0; i < 5 - Math.round(averageRating / 2); i++) {
+	// 		averageStarArr.push(<StarEmpty key={i + 10} />);
+	// 	}
+	// };
 
-	useEffect(() => {
-		showAverageStar();
-	}, []);
+	// useEffect(() => {
+	// 	showAverageStar();
+	// }, []);
 
 	return (
 		<ReviewsCon>
@@ -28,7 +28,22 @@ function Reviews({ review, averageRating }) {
 			</h2>
 			<AverageCon>
 				<p>{averageRating}</p>
-				<StarsWrap>{averageStar}</StarsWrap>
+				<StarsWrap>
+					{/* {[
+						...Array(Math.round(averageRating / 2)).map((_, i) => {
+							<StarFull />;
+						}),
+					]} */}
+					{Array.from({ length: Math.round(averageRating / 2) }, (_, key) => (
+						<StarFull key={key} />
+					))}
+					{Array.from(
+						{ length: 5 - Math.round(averageRating / 2) },
+						(_, key) => (
+							<StarEmpty key={key} />
+						),
+					)}
+				</StarsWrap>
 				<p className="kor">우수함</p>
 			</AverageCon>
 			<ReviewsWrap>
