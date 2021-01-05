@@ -1,41 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { FiMapPin, FiStar } from 'react-icons/fi';
 import { FaStar } from 'react-icons/fa';
 
 function Head({ hotelDetailData, averageRating }) {
 	const { name, location, star } = hotelDetailData.hotel_detail;
-	const [hotelDetails, setHotelDetails] = useState({});
-	// const [starArr, setStar] = useState([]);
-
-	// // state는 불변값? 을 가지고 있어야 하는데 starArr에 직접 push 해도되나????
-	// const handleStar = () => {
-	// 	for (let i = 0; i < star; i++) {
-	// 		starArr.push(<StarFull key={i} />);
-	// 	}
-	// 	for (let i = 0; i < 5 - star; i++) {
-	// 		starArr.push(<StarEmpty key={i} />);
-	// 	}
-	// 	setStar([...starArr]); // 직접 starArr에 push 했는데 setStar가 의미 있나?
-	// };
-
-	useEffect(() => {
-		setHotelDetails({
-			name,
-			location,
-			star,
-		});
-		// handleStar();
-	}, []);
-
-	// console.log(typeof star);
 
 	return (
 		<HeadCon>
 			<Wrap>
-				{/* <div>{starArr.map((star) => star)}</div> */}
-				{Array.from({ length: star }, (_, i) => (
-					<StarFull />
+				{Array.from({ length: star }, (_, idx) => (
+					<StarFull key={idx} />
+				))}
+				{Array.from({ length: 5 - star }, (_, idx) => (
+					<StarEmpty key={idx} />
 				))}
 				<NameKor>{name}</NameKor>
 				<NameEng>Hotel</NameEng>

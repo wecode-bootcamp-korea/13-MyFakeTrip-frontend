@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
 function RecommendCard({ card }) {
-	// const [starArr, setStar] = useState([]);
-
-	// useEffect(() => {
-	// handleStar();
-	// }, []);
-
 	const toggleHeartColor = (e) => {
 		let heartClassName = e.target.className;
 		e.target.className =
@@ -26,11 +20,12 @@ function RecommendCard({ card }) {
 					<h3>{card.title}</h3>
 					<div>
 						<StarWrap>
-							<StarFull />
-							<StarFull />
-							<StarFull />
-							<Star />
-							<Star />
+							{Array.from({ length: card.star }, (_, key) => (
+								<StarFull key={key} />
+							))}
+							{Array.from({ length: 5 - card.star }, (_, key) => (
+								<Star key={key} />
+							))}
 							<span>{card.star}</span>
 						</StarWrap>
 						<PriceWrap>
