@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 function Facilities({ hotelDetailData }) {
 	const [openFacilityBtn, setOpenFacilityBtn] = useState(false);
-	const [conveniences, setConveniences] = useState(
-		hotelDetailData.hotel_conveniences,
-	);
+	const [conveniences] = useState(hotelDetailData.hotel_conveniences);
 
 	const openFoldBtn = () => {
 		setOpenFacilityBtn(!openFacilityBtn);

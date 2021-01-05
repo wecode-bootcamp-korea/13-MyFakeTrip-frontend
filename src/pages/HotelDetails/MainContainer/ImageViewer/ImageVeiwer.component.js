@@ -1,24 +1,25 @@
-import Reac, { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 function ImageVeiwer({ hotelDetailData }) {
-	const [images, setImages] = useState(hotelDetailData.hotel_images);
-
+	const [images] = useState(hotelDetailData.hotel_images);
+	console.log(images);
 	return (
 		<ImageVeiwerCon>
 			<UpperImageWrap>
 				<Image upperOneImage>
-					<img src={images[0]} />
+					<img alt="hotel" src={images[0]} />
 				</Image>
 			</UpperImageWrap>
 			<LowerImageWrap>
-				{images.map((image, idx) => {
-					if (!idx) return;
-					return (
-						<Image key={idx}>
-							<img src={images[idx]} />
-						</Image>
-					);
+				{images.map((_, idx) => {
+					if (idx >= 1)
+						return (
+							<Image key={idx}>
+								<img alt="hotel" src={images[idx]} />
+							</Image>
+						);
+					return null;
 				})}
 			</LowerImageWrap>
 		</ImageVeiwerCon>
